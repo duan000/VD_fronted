@@ -1,0 +1,38 @@
+<div class="tp-section2">
+    <mat-card *ngIf="status==1" >投資信託　>　購入・募集　>　入力</mat-card>
+    <mat-card *ngIf="status==2" >投資信託　>　購入・募集　>　確認</mat-card>
+    <mat-card *ngIf="status==3" >投資信託　>　購入・募集　>　完了</mat-card>
+    <mat-card>
+        <!-- <mat-horizontal-stepper [color]="commonService.color" class="stepper">
+            <mat-step  editable="false" label="投信購入　入力"></mat-step>
+            <mat-step  completed editable="false" label="投信購入　確認"></mat-step>
+            <mat-step  completed="false" editable="false" label="投信購入　完了"></mat-step>
+        </mat-horizontal-stepper> -->
+        <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="0px">
+            <div *ngIf="status!=0" fxFlex="8" class="step">顧客カード</div>
+            <div *ngIf="status!=0" fxFlex="1" class="triangle_right"></div>
+            <div *ngIf="status==0" fxFlex="8" class="step_active">顧客カード</div>
+            <div *ngIf="status==0" fxFlex="1" class="triangle_right_active"></div>
+            
+            <div *ngIf="status!=1" fxFlex="18" class="step">ファインドラインナップ</div>
+            <div *ngIf="status!=1" fxFlex="1" class="triangle_right"></div>
+            <div *ngIf="status==1" fxFlex="18" class="step_active">ファインドラインナップ</div>
+            <div *ngIf="status==1" fxFlex="1" class="triangle_right_active"></div>
+
+            <div *ngIf="status!=2" fxFlex="9" class="step">購入・入力</div>
+            <div *ngIf="status!=2" fxFlex="1" class="triangle_right"></div>
+            <div *ngIf="status==2" fxFlex="9" class="step_active">購入・入力</div>
+            <div *ngIf="status==2" fxFlex="1" class="triangle_right_active"></div>
+
+            <div *ngIf="status!=3" fxFlex="9" class="step step4">購入・確認</div>
+            <div *ngIf="status!=3" fxFlex="1" class="triangle_right"></div>
+            <div *ngIf="status==3" fxFlex="9" class="step_active step4">購入・確認</div>
+            <div *ngIf="status==3" fxFlex="1" class="triangle_right_active"></div>
+
+            <div *ngIf="status!=4" fxFlex="9" class="step step5">購入・完了</div>
+            <div *ngIf="status==4" fxFlex="9" class="step_active step5">購入・完了</div>
+            <div ></div>
+        </div>
+    </mat-card>
+    <mat-divider></mat-divider>
+</div>

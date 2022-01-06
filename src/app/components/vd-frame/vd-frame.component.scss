@@ -1,0 +1,37 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'; //这段是引入material的核心主题
+
+.tp-container {
+    // position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(52, 185, 238, 0.2);
+ }
+ .tp-section {
+    padding: 5px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    width:200px;
+    background: rgba(52, 185, 238, 0.2);
+ }
+ .tp-section2 {
+    width: 98%;
+    padding: 10px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    background: rgba(52, 185, 238, 0.2);
+ }
+ .scrollDiv {
+    // height:750px;
+    border-radius: 10px;
+    width: 1000px;
+    // overflow:auto;
+
+ }
+ .page {
+     width: 1450px;
+     height: 940px;
+ }

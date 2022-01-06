@@ -1,0 +1,143 @@
+<app-vd-frame [display]="1" [status]="2">
+<div class="main">
+    <p class="p1">注文内容を入力してください</p>
+    <mat-card class="matcard">プロモーションエリア</mat-card>
+    <div>
+        <h4>
+            <div class="div1-1"></div>
+            <span class="div1-span">投資信託説明書</span>
+        </h4>
+        <br>
+        <p class="div1-p">
+            投資信託の申込（募集・購入・積立投信申込）にしては、最新の投資信託説明書（目論見書）、目論見書補完書面などをお受け取りに<br>
+            なり、内容をよくご確認のうえ取引ください。<br>
+            なを、投資信託説明書（目論見書）の発行（改訂）年月のご入力が必要となりますので、発行（改訂）年月を必ずご確認お願います。
+        </p>
+        <div class="read" fxLayout="row" fxLayoutAlign="start">
+
+                <div class="read_title" fxFlex="25">
+                    <mat-label>
+                        <b>投資信託説明書（目論見書）</b>
+                    </mat-label>
+                </div>
+                <div class="read_button" fxFlex="25">
+                    <mat-icon color="warn">attachment</mat-icon>&nbsp;
+                    <mat-label>(PDF: 323K)</mat-label>&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button color="accent" class="btnDisplay">表 示</button>                    
+                    <!-- <input type="file" name="" id="" accept="application/pdf"> -->
+                </div>
+                <div class="read_check" fxFlex="5" fxLayout="column">
+                    <div>
+                        <mat-checkbox corlor="warn" [checked]="dataSource[0].index1" value="1"></mat-checkbox>
+                    </div>
+                    <div class="div">必須</div>
+                </div>
+                <div class="read_text" fxFlex="35">
+                    投資信託説明書（目論見書）、目論見書補完書面および重要事項を確認しました
+                    <!-- {{ dataSource[0].index1 }} -->
+                </div>
+        </div>
+        <h4 class="div1-h4">
+            <div></div>
+            <span>申請内容</span>
+        </h4>
+
+        <div fxLayout="column" class="nisaDiv">
+            <!-- <div class="div1-div-div"> -->
+                <div class="p1">特別口座-配当収入期間</div>
+                <div>種別：-/(年)</div>
+            <!-- </div> -->
+        </div>
+
+        <div class="inputArea" fxLayout="column">
+        
+            <div fxLayout="row" fxLayoutGap="1px">
+                <div class="item" fxFlex="25">
+                    <mat-label><b>NSA利用可能金额</b></mat-label>
+                </div>
+                <div  class="item_right" fxFlex="75">{{ dataSource[0].index2 }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="1px">
+                <div class="item_bottom" fxFlex="25">
+                <mat-label><b>取引区分</b></mat-label><font color="red">※必須</font>
+                </div>
+                <div  class="item_bottom_right" fxFlex="75">
+                    <input type="radio" name="qufen" [(ngModel)]="dataSource[0].index3" value="0">NISA優先
+                    <input type="radio" name="qufen" [(ngModel)]="dataSource[0].index3" value="1">特定預り
+                    <!-- {{dataSource[0].index3}} -->
+                </div>
+            </div>
+        </div>
+
+        <p class="div1-p1">
+            <span>「NSA利用可能金额」はXXXXXX</span><br>
+            <span>「前営業日時点のNSA利用可能金额」はXXXXXX</span><br>
+            <span>「NISA優先」はXXXXXXX</span>
+        </p>
+
+        <div class="inputArea" fxLayout="column">
+        
+            <div fxLayout="row" fxLayoutGap="1px">
+                <div class="item" fxFlex="25">
+                    <b>基準金額</b>
+                </div>
+                <div  class="item_right" fxFlex="75">{{ dataSource[0].index4 }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="1px">
+                <div class="item" fxFlex="25">
+                    <mat-label><b>前日比</b></mat-label>
+                </div>
+                <div class="item_right" fxFlex="75">{{ dataSource[0].index5 }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="1px">
+                <div class="item" fxFlex="25">
+                    <mat-label><b>時刻</b></mat-label>
+                </div>
+                <div class="item_right" fxFlex="75">{{ dataSource[0].index6 }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="1px">
+                <div class="item" fxFlex="25">
+                    <mat-label><b>決済銀行口座-番号</b></mat-label>
+                </div>
+                <div class="item_right" fxFlex="75">{{ dataSource[0].index7 }}</div>
+            </div>
+            <div fxLayout="row">
+                <div class="item" fxFlex="25">
+                    <mat-label><b>金額</b></mat-label><font color="red"> ※必須</font>
+                </div>
+                <div class="item_right" fxFlex="75">
+                    <input type="number" [(ngModel)]="dataSource[0].index8" [value]="dataSource[0].index8"> 元 
+                     <!-- {{ dataSource[0].index8 }} -->
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="1px" fxLayoutAlign="start">
+                <div class="item_bottom" fxFlex="25" fxFlexOffset="0px">
+                    <mat-label><b>連絡電話番号</b></mat-label><font color="red"> ※必須</font>
+                </div>
+                <div class="item_bottom_right" fxFlex="75">
+                    <input type="text" matInput color="warn" maxlength="2" [(ngModel)]="dataSource[0].index9" [value]="dataSource[0].index9"> -
+                    <input type="text" maxlength="4" [(ngModel)]="dataSource[0].index10" [value]="dataSource[0].index10"> -
+                    <input type="text" maxlength="4" [(ngModel)]="dataSource[0].index11" [value]="dataSource[0].index11"> （半角数字）
+                    <!-- {{ dataSource[0].index9 }}-{{ dataSource[0].index10 }}-{{ dataSource[0].index11 }} -->
+                </div>
+            </div>
+        </div>
+        <div class="btnDiv">
+            <button mat-raised-button color="accent" class="button1" (click)="goback()"><<戻す</button>
+            <button mat-raised-button color="warn" class="button2" (click)="goto()">確　認</button>
+        </div>
+    </div>
+    <mat-card class="matcard">
+        <p>PDFファイルXXXXX</p>
+        <p>募集XXXXX</p>
+        <p>募集XXXXX</p>
+    </mat-card>
+    <br/>
+    <mat-card class="matcard">
+        <p>PDFファイルXXXXXXXXXXXXXXXX</p>
+        <p>募集XXXXXCCCCCCCCCCC</p>
+        <p>募集XXXXXCCCCCCCCCCCC</p>
+    </mat-card>
+</div>
+
+</app-vd-frame>

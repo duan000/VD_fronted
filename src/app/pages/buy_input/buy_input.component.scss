@@ -1,0 +1,168 @@
+.main{
+    margin: 0 10px; 
+    padding-bottom: 40px;
+}
+
+.read{
+    background: white;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color:darkgrey;
+}
+.read_title{
+    background: lightblue;
+    height: 50px;
+    line-height: 50px;
+    align-content: center;
+    align-items: center;
+    font-style: bold;
+}
+.read_button {
+    height: 50px;
+    line-height: 50px;
+    align-self: center;
+    align-content: center;
+    display: block;
+    align-items: center;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-left-color: darkgrey;
+    border-right-color: darkgrey;
+    
+}
+.read_text{
+    padding-top:4px;
+}
+.read_check {
+    color: red;
+    font-size:10px;
+    padding-top:4px;
+    padding-left:4px;
+}
+.matcard{
+    border:1px solid darkgrey;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.div1-1{
+    height: 12px;
+    width: 12px; 
+    background-color: black;
+    float: left; 
+    margin: 5px 5px 0 0;
+}
+.div1-span{
+    float: left;
+    font-weight: bold;
+}
+.div1-p{
+    word-wrap:break-word;
+    word-break:keep-all;
+    clear: both;
+}
+
+.button1{
+    float: right; 
+    margin-right: 5px;
+}
+.div1-h4{
+    margin-top: 20px;
+}
+.div1-h4 div{
+    height: 12px; 
+    width: 12px; 
+    background-color: black;
+    float: left; 
+    margin: 5px 5px 0 0;
+}
+.div1-h4 span{
+    float: left;
+    font-weight: bold;
+}
+.div1-div-div{
+    float: right;
+    clear: both;
+}
+.div1-div-div .p1{
+    margin-bottom: 0;
+}
+.div1-p1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    margin: 10px 0 20px 0;
+}
+.btnDisplay {
+    width: 100px;
+}
+.div-p2{
+    margin: 10px 0 15px 0;
+}
+.btnDiv{
+    padding: 30px;
+}
+.btnDiv .button1{
+    line-height: 25px;
+    float: left; 
+}
+.btnDiv .button2{
+    width: 160px;
+    margin:0 auto; 
+    display: block;
+}
+
+.inputArea{
+    border-style: solid;
+    border-color: darkgrey;
+    border-width: 1px;
+    background: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.item {
+    height: 40px;
+    border-style: solid;
+    border-bottom-color: darkgrey;
+    border-left-color: white;
+    border-right-color: darkgrey;
+    border-top-color: white;
+    border-width: 1px;
+}
+
+.item_right {
+    height: 40px;
+    border-style: solid;
+    border-bottom-color: darkgrey;
+    border-left-color: white;
+    border-right-color: white;
+    border-top-color: white;
+    border-width: 1px;
+}
+
+.item_bottom {
+    height: 40px;
+    border-style: solid;
+    border-bottom-color: white;
+    border-left-color: white;
+    border-right-color: darkgrey;
+    border-top-color: white;
+    border-width: 1px;
+}
+
+.item_bottom_right {
+    height: 40px;
+    border-style: solid;
+    border-bottom-color: white;
+    border-left-color: white;
+    border-right-color: white;
+    border-top-color: white;
+    border-width: 1px;
+}
+
+.nisaDiv{
+    text-align: end;
+    align-content: flex-end;
+}

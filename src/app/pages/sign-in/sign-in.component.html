@@ -1,0 +1,35 @@
+<section class="sign">
+    <div class="main">
+        <div class="name">xxxx銀行</div>
+
+        <form class="example-container">
+            <mat-form-field appearance="outline">
+                <mat-label>ユーザーID</mat-label>
+                <input matInput [formControl]="username" required [(ngModel)]="user.username">
+                <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>ログインパスワード</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required [(ngModel)]="user.password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <!-- <mat-error *ngIf="true">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+
+            <p class="login_tip">*パスワードの大文字と小文字区別されます。</p>
+            <!-- 
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Verification code</mat-label>
+                <input matInput [formControl]="verification" required>
+            </mat-form-field> -->
+
+            <button class="signBtn" mat-flat-button color="warn" (click)='signTopPage()'>ログイン</button>
+
+        </form>
+    </div>
+
+
+
+</section>

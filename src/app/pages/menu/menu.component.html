@@ -1,0 +1,100 @@
+<div class="tp-section">
+    <mat-card>
+      <mat-expansion-panel class="menuPanel">
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                <b>投資信託</b>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+          <div class="act_row">
+          <button mat-icon-button  routerLink="/pages/customCard">
+            <mat-icon>filter_1</mat-icon> 購入・募集
+          </button>
+        </div>
+        </mat-action-row>
+        <mat-action-row>
+          <button mat-icon-button>
+            <mat-icon>filter_2</mat-icon> 解約
+          </button>
+        </mat-action-row>
+        <mat-action-row>
+          <button mat-icon-button>
+            <mat-icon>filter_3</mat-icon> 取消
+          </button>
+        </mat-action-row>
+        <mat-action-row>
+          <button mat-icon-button routerLink="/pages/fundList">
+            <mat-icon>filter_4</mat-icon><span>ファンドラインナップ</span>
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-card>
+    
+    <mat-card>
+      <mat-expansion-panel class="menuPanel">
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                <b>口座開設</b>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+          <button mat-icon-button routerLink="/top">
+            <mat-icon>ac_unit</mat-icon> Top画面
+          </button>
+        </mat-action-row>
+        <mat-action-row>
+          <button mat-icon-button>
+            <mat-icon>filter_2</mat-icon> 解約
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-card>
+
+    <mat-card>
+      <mat-expansion-panel class="menuPanel">
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                <b>そのた</b>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>pages</mat-icon> 各テスト画面へ
+            </button>
+              <mat-menu #menu="matMenu" routerLink="/pages/customCard">
+                <button mat-menu-item>
+                  <mat-icon [color]="commonService.color">whatshot</mat-icon>
+                  <span>顧客カード画面へ</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon [color]="commonService.color">dialpad</mat-icon>
+                  <span>入力画面へ</span>
+                </button>
+                <button mat-menu-item  routerLink="/pages/cpage1">
+                  <mat-icon [color]="commonService.color">voicemail</mat-icon>
+                  <span>確認画面へ</span>
+                </button>
+                <button mat-menu-item routerLink="/pages/cpage2">
+                  <mat-icon [color]="commonService.color">mood</mat-icon>
+                  <span>完了画面へ</span>
+                </button>
+                <button mat-menu-item routerLink="/pages/pageOne">
+                  <mat-icon [color]="commonService.color">notifications_off</mat-icon>
+                  <span>テスト画面へ</span>
+                </button>
+                <button mat-menu-item routerLink="/pages/pageThree">
+                  <mat-icon [color]="commonService.color">notifications_off</mat-icon>
+                  <span>レスポンステスト画面へ</span>
+                </button>
+              </mat-menu>
+            
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-card>
+  
+  
+
+
+
+</div>

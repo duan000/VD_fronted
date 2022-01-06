@@ -1,0 +1,31 @@
+<section *ngIf="!commonService.loginFlag">
+    <div class="divTable">
+        <div class="divLogin" >
+            <div class="divSection">
+                <br/>
+                <br/>
+            <p>
+                <mat-form-field  appearance="outline" hintLabel="" floatLabel="always" mat-error [color]="commonService.color">
+                    <mat-label>UserName</mat-label>
+                        <input matInput #userName maxlength="20" placeholder="  input userName here!" required [formControl]="nameCtrl">
+                        <mat-icon matPrefix> sentiment_very_satisfied </mat-icon>  
+                        <mat-error *ngIf="nameCtrl.invalid">Please Input the Name</mat-error>
+                        <mat-hint align="end">{{userName.value?.length || 0}}/20</mat-hint>  
+                </mat-form-field>
+            </p>
+            <br/>
+            <p>
+                <mat-form-field  appearance="outline" hintLabel="" floatLabel="always" mat-error [color]="commonService.color">
+                    <mat-label >password</mat-label>
+                        <input matInput #password maxlength="20" placeholder="  input password here!" required [formControl]="passwordCtrl">
+                        <mat-icon matPrefix> sentiment_very_satisfied </mat-icon> 
+                        <mat-error *ngIf="passwordCtrl.invalid">Please Input the Password</mat-error>
+                        <mat-hint align="end">{{password.value?.length || 0}}/20</mat-hint>  
+                </mat-form-field>
+            </p>
+            <p><mat-error *ngIf="errorFlg">Please Input the Name And Password</mat-error></p>
+            <button type="submit" mat-raised-button [color]="commonService.color" (click)="goPageOne()">Login</button>
+        </div>
+        </div>
+    </div>
+</section>

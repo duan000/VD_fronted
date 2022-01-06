@@ -1,0 +1,38 @@
+<div class="page" id="page">
+    <!-- Header -->
+    <div>
+        <app-header></app-header>
+    </div>
+    <mat-sidenav-container class="tp-container" >
+    
+        <!-- SideNav -->
+        <mat-sidenav style="background: rgba(52, 185, 238, 0.2);" #menu mode="side" position="start" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+                    <!-- Menu -->
+                    <app-menu></app-menu>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="5px">
+                <div fxFlex="3">
+                    <button mat-icon color="warn" style="width:1px;" (click)="menu.toggle()">|  </button>
+                </div>
+                <div fxFlex="97" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="10px">
+                    <div *ngIf="display==1">
+                        <app-step-bar [status]="status"></app-step-bar>
+                    </div>
+
+                    <div class="scrollDiv">
+                            <!-- Main Page -->
+                            <ng-content ></ng-content> 
+                    </div>
+                    
+                </div>
+            </div>
+                            <!-- StepBar -->
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <!-- Footer -->
+    <div>
+        <app-footer></app-footer>
+    </div>
+</div>

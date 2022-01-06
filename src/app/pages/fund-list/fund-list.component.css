@@ -1,0 +1,100 @@
+.container {
+    margin: 0 auto;
+}
+
+.mainContent {
+    /* background-color: rgb(184, 149, 149); */
+    background: white;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+    border-color: rgb(197, 195, 195);
+    border-radius: 5px;
+    /* width: 100%; */
+    /* display: block; */
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 auto;
+}
+
+.searchItem {
+    border-color: white;
+    border-bottom: rgb(197, 195, 195);
+    border-style: solid;
+    border-width: 1px;
+}
+
+.serchForm {
+    /* min-width: 150px;
+    max-width: 500px; */
+    width: 100%;
+}
+
+.example-form-field {
+    width: 450px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.searchBtn{
+    padding-top: 18px;
+    padding-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid rgb(197, 195, 195);;
+    margin: 10px auto;
+    border-radius: 10px;
+    
+    /* border: "1" */
+}
+
+mat-radio-group {
+    margin-left: 15px;
+    zoom: 80%;
+}
+
+.order-radio {
+    margin-left: 75px;
+}
+
+mat-form-field {
+    /* margin-left: 15px; */
+    height: 60px;
+}
+
+mat-paginator {
+    float: right;
+}
+
+mat-card {
+    background: rgba(52, 185, 238, 0.2);
+    margin: 10px 0px;
+}
+
+.result{
+    border-color: white;
+    border-radius: 5px;
+}
+
+.error {
+    font-size: 16px;
+    font-style: bold;
+    color: red;
+    background: rgb(247, 211, 211);
+    border-style: solid;
+    border-width: 1px;
+    border-color:red;
+}

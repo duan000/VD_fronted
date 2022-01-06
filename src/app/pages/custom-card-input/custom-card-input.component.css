@@ -1,0 +1,59 @@
+
+.topTip {
+    height: 6px;
+}
+
+.container {
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+mat-radio-button {
+    zoom: 80%;
+    padding: 5px;
+}
+
+
+mat-card {
+    background: rgba(52, 185, 238, 0.2);
+    margin: 10px 0px;
+}
+
+.check {
+    margin: 0 auto;
+    padding-left:5px;
+    font-style: bold;
+    align-items: center;
+    align-content: center;
+    border: solid 1px red;
+    width: 30px;
+    border-radius: 4px;
+    font-size: 1px;
+    color: red;
+    margin-top: -20px;
+    margin-right: 10px;
+}
+
+.item{
+    padding: 10px;
+    background: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color:darkgray;
+    border-radius: 5px;
+}
+
+.mainContent {
+    border-radius: 10px;
+}
+
+button {
+    margin-top: 6px;
+}
+
+.nextBtn {
+    /* margin: 0 auto; */
+    margin-left: 680px;
+    width: 200px;
+    height: 60px;
+}

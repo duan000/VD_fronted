@@ -1,0 +1,143 @@
+<app-vd-frame [display]="1" [status]="1">
+<div class="container">
+    <mat-card><b>ファンド一覧ファンド一覧ファンド一覧</b></mat-card>
+
+    <mat-card class="error" *ngIf="errorMsg !== ''"><b>{{ errorMsg }}</b></mat-card>
+    
+        <div class="mainContent" fxLayout="column" fxLayoutAlign="start">
+            <div fxLayout="row">
+                <div class="searchItem" fxFlex="25">
+                    ファンド名称
+                </div>
+                <div class="searchItem" fxFlex="75">
+                        <mat-form-field class="example-form-field" appearance="outline">
+                            <input matInput color="warn" type="text" [(ngModel)]="service.searchCondition.fundName">
+                        </mat-form-field>
+                </div>
+            </div>
+            <!-- 委託会社 -->
+            <div fxLayout="row">
+                <div class="searchItem" fxFlex="25">委託会社</div>
+                <div class="searchItem" fxFlex="75">
+                    <div>
+                        <mat-form-field class="example-form-field"  appearance='outline'>
+                            <mat-select matNativeControl appearance="fill" [(ngModel)]="service.searchCondition.itakuKaishaCd" >
+                                <mat-option *ngFor="let item of service.itakushaOptions" [value]="item.code">{{item.value}}</mat-option>
+                                
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <!-- ファンド分類１ -->
+            <div fxLayout="row">
+                <div class="searchItem" fxFlex="25">{{ fundClsc1Name }}</div>
+                <div class="searchItem" fxFlex="75">
+                    <div>
+                        <mat-form-field class="example-form-field"  appearance='outline'>
+                            <mat-select matNativeControl appearance="fill" [(ngModel)]="service.searchCondition.fundCls1" >
+                                <mat-option *ngFor="let item of service.fundClsc1Options" [value]="item.code">{{item.value}}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <!-- ファンド分類２ -->
+            <div fxLayout="row">
+                <div class="searchItem" fxFlex="25">{{ fundClsc2Name }}</div>
+                <div class="searchItem" fxFlex="75">
+                    <div>
+                        <mat-form-field class="example-form-field"  appearance='outline'>
+                            <mat-select matNativeControl appearance="fill" [(ngModel)]="service.searchCondition.fundCls2" >
+                                <mat-option *ngFor="let item of service.fundClsc2Options" [value]="item.code">{{item.value}}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <!-- ファンド分類２ -->
+            <div fxLayout="row">
+                <div class="searchItem" fxFlex="25">{{ fundClsc3Name }}</div>
+                <div class="searchItem" fxFlex="75">
+                    <div>
+                        <mat-form-field class="example-form-field"  appearance='outline'>
+                            <mat-select matNativeControl appearance="fill" [(ngModel)]="service.searchCondition.fundCls3" >
+                                <mat-option *ngFor="let item of service.fundClsc3Options" [value]="item.code">{{item.value}}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div class="searchItem" fxFlex="25">昇降順</div>
+                <div class="searchItem" fxFlex="75">
+                        <mat-radio-group [(ngModel)]="radioForm.input_value">
+                            <p><mat-radio-button checked value='1' color="warn" >なし</mat-radio-button></p>
+                            <p><mat-radio-button color="warn" value='2'>降順</mat-radio-button></p>
+                        </mat-radio-group>
+                </div>
+            </div>
+            <div class="searchBtn">
+                <button mat-flat-button color="warn" type="submit" (click)='search()'>検索する</button>
+            </div>
+        </div>
+
+        <div class="result" fxLayout="column" *ngIf="service.searchResult.length != 0">
+            <div>
+                <table mat-table color="warn" [dataSource]="service.searchResult">
+
+                    <ng-container matColumnDef="index">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.index}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="fundName">
+                        <th mat-header-cell *matHeaderCellDef> ファンド名称 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fundName}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="itakuKaishaName">
+                        <th mat-header-cell *matHeaderCellDef> ファンド分類 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.itakuKaishaName}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="kijunKakaku">
+                        <th mat-header-cell *matHeaderCellDef> 基準価額 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.kijunKakaku}}円 </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="zenjituhi">
+                        <th mat-header-cell *matHeaderCellDef> 前日比 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.zenjituhi}}円 </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="tesuryo">
+                        <th mat-header-cell *matHeaderCellDef> インターネット手数料(税込) </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tesuryo}}円 </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="operation">
+                        <th mat-header-cell *matHeaderCellDef> 操作 </th>
+                        <td mat-cell *matCellDef="let element"><button mat-flat-button color="warn" (click)='buyFund(element.fundCd)'>購入</button> </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+            <div>
+                <mat-paginator  [pageSize]="5" showFirstLastButtons aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </div>
+            <div>
+                <button mat-flat-button color="warn" (click)='forwordPage()'>≪戻る</button>
+            </div>
+        </div>
+    
+
+    <br/>
+    <mat-card>情朝提供:株式会社野材総合研究所(NRD本面面は投資判所の参考としての情報提供を目的として提供しているものであり、 投査垂誘を目的にしたものではありません。投資信E情報の審作権は株式会社野材総合研究所(NRDに帰属します。 不画面の内容について1は万全を期しておりますが、その内容を保証するものではありません。これらの情報によって生じたいかなる損害についても、 当社およごA報提供者は一切の青任を負いませ6す面面の内容について、畜積·編集加工·二次利用を禁します。
+    </mat-card>
+
+</div>
+</app-vd-frame>
