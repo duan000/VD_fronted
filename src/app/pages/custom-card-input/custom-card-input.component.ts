@@ -11,6 +11,7 @@ const ELEMENT_DATA: any[] = [
 ];
 
 const ELEMENT_DATA1: any[] = [
+  { list_name: '株', value: '' },
   { list_name: '株信用', value: '' },
   { list_name: 'ワラント', value: '' },
   { list_name: '先物op', value: '' },

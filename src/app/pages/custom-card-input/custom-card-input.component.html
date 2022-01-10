@@ -7,22 +7,50 @@
         <div id="qa" class="mainContent">
 
             <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="5px">
+
                 <ng-container *ngFor="let item of dataSource, let i = index">
-                
                     <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="1px">
                         <div class="item" fxFlex="35">
-                            {{item.name}}<div class="check"> 必填 </div>
+                            {{item.name}}
+                            <div class="check"> 必填 </div>
                         </div>
                         <div class="item" fxFlex="65">
-                            <mat-radio-group  [(ngModel)]="radioValue[i]">
-                                <p  *ngFor="let it of item.list_td">
+                            <mat-radio-group [(ngModel)]="radioValue[i]">
+                                <p *ngFor="let it of item.list_td">
                                     <mat-radio-button [value]='it'>{{it}}</mat-radio-button>
                                 </p>
                             </mat-radio-group>
                         </div>
                     </div>
                 </ng-container>
+
                 <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="1px">
+
+                    <div class="item" fxFlex="35" fxLayout="row" fxLayoutAlign="start">
+                        <div class="item" fxFlex="35">
+                            投資経験
+                        </div>
+                        <div fxFlex="65">
+                            <ng-container *ngFor="let item of dataSource1, let i = index">
+                                <div class="item">
+                                    {{item.list_name}}
+                                    <p class="check">必填</p>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                    <div class="item" fxFlex="65">
+                        <div class="item" *ngFor="let item of dataSource1, let i = index">
+                            <input style="height: 16px;" type="number" value="" id="" [(ngModel)]="item.value">年
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="1px">
                     <div class="item" fxFlex="35">
                         <div>投資経験</div>
                         <div>
@@ -42,21 +70,20 @@
                                 <input type="number" value="" id="" [(ngModel)]="item.value" >年
                             </div>
                     </div>
-                </ng-container>
-            </div>
+                </ng-container> -->
         </div>
+    </div>
 
-        <div>
-            <button mat-flat-button color="warn" (click)='goBack()'>≪戻る</button>
-            <button mat-flat-button color="warn" type="submit" class="nextBtn" (click)='nextPage()'>次へ</button>
-        </div>
+    <div>
+        <button mat-flat-button color="warn" (click)='goBack()'>≪戻る</button>
+        <button mat-flat-button color="warn" type="submit" class="nextBtn" (click)='nextPage()'>次へ</button>
+    </div>
 
-        <mat-card>
-            <b>情朝提供:株式会社野材総合研究所(NRD本面面は投資判所の参考としての情報提供を目的として提供しているものであり、
+    <mat-card>
+        <b>情朝提供:株式会社野材総合研究所(NRD本面面は投資判所の参考としての情報提供を目的として提供しているものであり、
             投査垂誘を目的にしたものではありません。投資信E情報の審作権は株式会社野材総合研究所(NRDに帰属します。
             不画面の内容について1は万全を期しておりますが、その内容を保証するものではありません。これらの情報によって生じたいかなる損害についても、
             当社およごA報提供者は一切の青任を負いませ6す面面の内容について、畜積·編集加工·二次利用を禁します。
-            </b>
-        </mat-card>
-    </div>
+        </b>
+    </mat-card>
 </app-vd-frame>
