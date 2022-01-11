@@ -34,6 +34,10 @@ export class BuyInputComponent implements OnInit {
 
   public check:boolean = false;
 
+  public unit:string="0";
+
+  public state:boolean = true;
+
   ngOnInit(): void {
 
     this.dataSource1.basePrice = this.service1.buyInfo1.basePrice;
@@ -60,6 +64,12 @@ export class BuyInputComponent implements OnInit {
       return;
     }
 
+    let num = /^[0-9]{2,4}$/;
+    if(!num.test(this.dataSource1.phoneNumber1) || !num.test(this.dataSource1.phoneNumber2) || !num.test(this.dataSource1.phoneNumber3)){
+      alert("電話番号を正しく記入してください。");
+      return;
+    }
+
     this.service.enter(this.dataSource1)
       .subscribe((data:any) => {   
         if(data.success){
@@ -72,6 +82,10 @@ export class BuyInputComponent implements OnInit {
 
   goback() {
     this.router.navigate(['/pages/fundList']);
+  }
+
+  setState(){
+    this.state = false;
   }
 
 }

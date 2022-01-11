@@ -32,6 +32,8 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
   fundClsc2Name: string;
   fundClsc3Name: string;
 
+  name:string = "bb";
+
   constructor (
     private router: Router,
     private http: HttpClient,

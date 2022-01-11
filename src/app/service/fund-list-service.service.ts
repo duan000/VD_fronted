@@ -29,9 +29,7 @@ const ELEMENT_DATA1: FundInfo[] = [
 
 export class FundListServiceService {
 
-  public dataList:any[]=[];
-
-  public retFundList: any[] = this.dataList;
+  public retFundList: any[] = [];
 
   constructor(private httpClient:HttpClient) {
 
@@ -40,9 +38,8 @@ export class FundListServiceService {
     this.httpClient.get(url,{params:{status:0}})
       .subscribe((data:any) => {
         console.log(data);
-        this.dataList = data.data;
         this.retFundList = data.data;
-        console.log(this.dataList);
+        console.log(this.retFundList);
       });
   }
 
