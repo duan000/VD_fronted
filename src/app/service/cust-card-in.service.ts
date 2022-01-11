@@ -5,11 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class CustCardInService {
 
-
-  input_1: any;
   dataSource1: any[] = [];
   radioValue: any[] = []
-
 
   constructor() { }
 }

@@ -29,28 +29,27 @@ const ELEMENT_DATA1: any[] = [
 })
 export class CustomCardInputComponent extends BasicPageComponent implements OnInit {
 
-
-  data: any = {
-    annualIncome:'',
-    financialAssets:'',
-    investmentPolicy:'',
-    investmentExperience: {
-      inputValue1: 0,
-      inputValue2:0,
-      inputValue3: 0,
-      inputValue4:0,
-      inputValue5: 0,
-      inputValue6:0,
-      inputValue7:0,
-      inputValue8: 0,
-      inputValue9:0,
-    }
+  data = {
+    radioValue: [
+      { annualIncome: '' },
+      { financialAssets: '' },
+      { investmentPolicy: '' }
+    ],
+    investmentExperience: [
+      {inputValue1:''},
+      {inputValue2:''},
+      {inputValue3:''},
+      {inputValue4:''},
+      {inputValue5:''},
+      {inputValue6:''},
+      {inputValue7:''},
+      {inputValue8:''},
+      {inputValue9:''}
+    ],
   }
 
   dataSource = ELEMENT_DATA;
-  // input1绑定的值
-  input_1: any[] = [{ list_name: '株', value: '' }];
-  // input_2-7绑定的值
+  // input_1-7绑定的值
   dataSource1 = ELEMENT_DATA1;
 
   // radio绑定的值
@@ -66,11 +65,12 @@ export class CustomCardInputComponent extends BasicPageComponent implements OnIn
   nextPage() {
 
     this.custService.dataSource1 = this.dataSource1;
-    this.custService.input_1 = this.input_1;
     this.custService.radioValue = this.radioValue;
     console.log(this.custService.dataSource1)
-    console.log(this.custService.input_1)
     console.log(this.custService.radioValue)
+    console.log(this.data);
+    
+    
     this.router.navigate(['pages/fundList'])
   }
 
