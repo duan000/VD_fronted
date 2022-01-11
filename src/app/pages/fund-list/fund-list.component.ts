@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { FundListServiceService} from 'src/app/service/fund-list-service.service';
+import { FundListServiceService } from 'src/app/service/fund-list-service.service';
 import { BasicPageComponent } from 'src/app/common/basicPage';
 import { SearchCondition } from 'src/app/common/Entity/SearchCondition';
 import { SelectItem } from 'src/app/common/Entity/selectItem';
@@ -23,43 +23,42 @@ import { FundInfo } from 'src/app/common/Entity/FundInfo';
   styleUrls: ['./fund-list.component.css']
 })
 
-export class FundListComponent extends BasicPageComponent implements OnInit, AfterViewInit  {
+export class FundListComponent extends BasicPageComponent implements OnInit, AfterViewInit {
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
 
   service: BuyService;
   fundClsc1Name: string;
   fundClsc2Name: string;
   fundClsc3Name: string;
 
-  constructor (
+  constructor(
     private router: Router,
     private http: HttpClient,
     private fundListService: FundListServiceService,
     private buyService: BuyService
   ) {
     super();
-      // 初期化
-      this.fundClsc1Name="";
-      this.fundClsc2Name="";
-      this.fundClsc3Name="";
-      this.service = buyService;
-   }
+    // 初期化
+    this.fundClsc1Name = "";
+    this.fundClsc2Name = "";
+    this.fundClsc3Name = "";
+    this.service = buyService;
 
+  }
 
-
-  radioForm:any =[
-    {name:'昇降順', input_value:'1'}
+  radioForm: any = [
+    { name: '昇降順', input_value: '1' }
   ]
 
   control = new FormControl();
-  
-  
 
   elementData: FundInfo[] = [];
-    // fund列表
-  displayedColumns: string[] = ['index', 'fundName', 'itakuKaishaName', 'kijunKakaku', 'zenjituhi', 'tesuryo', 'operation']; 
-  dataSource:any;
+  // fund列表
+  displayedColumns: string[] = ['index', 'fundName', 'itakuKaishaName', 'kijunKakaku', 'zenjituhi', 'tesuryo', 'operation'];
+  dataSource: any;
 
   ngOnInit() {
 
@@ -67,14 +66,16 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
     // 検索条件エリア設定
     this.generatePage();
 
-    // this.elementData = this.fundListService.retFundList;
-    console.log("this.service.searchResult:[" + this.service.searchResult.length + "]");
+    this.elementData = this.fundListService.retFundList;
+    this.service.searchResult = new MatTableDataSource<FundInfo>(this.elementData);
+    this.service.searchResult.paginator = this.paginator;
     console.log(this.service.searchResult);
-    
+
+    console.log("this.service.searchResult:[" + this.service.searchResult.length + "]");
   }
 
   ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
+
   }
 
 
@@ -89,9 +90,9 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
     select2.code = "KS002"
     this.service.itakushaOptions = [select1, select2];
 
-    this.fundClsc1Name="投資対象";
-    this.fundClsc2Name="リスク";
-    this.fundClsc3Name="决算回数";
+    this.fundClsc1Name = "投資対象";
+    this.fundClsc2Name = "リスク";
+    this.fundClsc3Name = "决算回数";
 
     // ファンド分類１
     let selectFundA1: SelectItem = new SelectItem();
@@ -121,15 +122,6 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
     this.service.fundClsc3Options = [selectFundC1, selectFundC2];
   }
 
-  // private _filter(value: string): string[] {
-  //   const filterValue = this._normalizeValue(value);
-  //   return this.streets.filter(street => this._normalizeValue(street).includes(filterValue));
-  // }
-
-  // private _normalizeValue(value: string): string {
-  //   return value.toLowerCase().replace(/\s/g, '');
-  // }
-  
   forwordPage() {
     this.router.navigate(['/pages/customCard'])
   }
@@ -151,7 +143,7 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
   search() {
 
     // 仮判定
-    if (this.service.searchCondition.fundName) { 
+    if (this.service.searchCondition.fundName) {
 
       this.errorMsg = "明細データがございません。条件を直して再度検索してください";
       this.service.searchResult = undefined;
@@ -163,13 +155,14 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
 
       this.elementData = this.fundListService.retFundList;
       this.service.searchResult = new MatTableDataSource<FundInfo>(this.elementData);
-      // this.service.searchResult.filters();
       this.service.searchResult.paginator = this.paginator;
-      
       console.log(this.service.searchResult);
+      console.log(this.service.searchResult.paginator);
 
-      console.log(this.elementData);
-  
+
+
+      // console.log(this.elementData);
+
     }
 
   }
