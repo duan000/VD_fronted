@@ -22,7 +22,8 @@
                     <div>
                         <mat-form-field class="example-form-field" appearance='outline'>
                             <mat-select matNativeControl appearance="fill" [(ngModel)]="service.searchCondition.itakuKaishaCd">
-                                <mat-option *ngFor="let item of service.itakushaOptions" [value]="item.code">{{item.value}}</mat-option>
+                                <mat-option *ngFor="let item of service.itakushaOptions" [value]="item.code">
+                                    {{item.value}}</mat-option>
 
                             </mat-select>
                         </mat-form-field>
@@ -36,7 +37,8 @@
                     <div>
                         <mat-form-field class="example-form-field" appearance='outline'>
                             <mat-select matNativeControl appearance="fill" [(ngModel)]="service.searchCondition.fundCls1">
-                                <mat-option *ngFor="let item of service.fundClsc1Options" [value]="item.code">{{item.value}}</mat-option>
+                                <mat-option *ngFor="let item of service.fundClsc1Options" [value]="item.code">
+                                    {{item.value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -49,7 +51,8 @@
                     <div>
                         <mat-form-field class="example-form-field" appearance='outline'>
                             <mat-select matNativeControl appearance="fill" [(ngModel)]="service.searchCondition.fundCls2">
-                                <mat-option *ngFor="let item of service.fundClsc2Options" [value]="item.code">{{item.value}}</mat-option>
+                                <mat-option *ngFor="let item of service.fundClsc2Options" [value]="item.code">
+                                    {{item.value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -62,7 +65,8 @@
                     <div>
                         <mat-form-field class="example-form-field" appearance='outline'>
                             <mat-select matNativeControl appearance="fill" [(ngModel)]="service.searchCondition.fundCls3">
-                                <mat-option *ngFor="let item of service.fundClsc3Options" [value]="item.code">{{item.value}}</mat-option>
+                                <mat-option *ngFor="let item of service.fundClsc3Options" [value]="item.code">
+                                    {{item.value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -88,7 +92,7 @@
 
         <div class="result" fxLayout="column">
             <div>
-                <table mat-table color="warn" [dataSource]="service.searchResult">
+                <table mat-table color="warn" [dataSource]="searchResult">
 
                     <ng-container matColumnDef="index">
                         <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -130,7 +134,7 @@
                 </table>
             </div>
             <div>
-                <mat-paginator [pageSize]="5" showFirstLastButtons aria-label="Select page of periodic elements">
+                <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons aria-label="Select page of periodic elements">
                 </mat-paginator>
             </div>
             <div>
@@ -139,7 +143,7 @@
         </div>
 
 
-        <br/>
+        <br />
         <mat-card>情朝提供:株式会社野材総合研究所(NRD本面面は投資判所の参考としての情報提供を目的として提供しているものであり、 投査垂誘を目的にしたものではありません。投資信E情報の審作権は株式会社野材総合研究所(NRDに帰属します。 不画面の内容について1は万全を期しておりますが、その内容を保証するものではありません。これらの情報によって生じたいかなる損害についても、 当社およごA報提供者は一切の青任を負いませ6す面面の内容について、畜積·編集加工·二次利用を禁します。
         </mat-card>
 

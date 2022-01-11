@@ -25,9 +25,7 @@ import { FundInfo } from 'src/app/common/Entity/FundInfo';
 
 export class FundListComponent extends BasicPageComponent implements OnInit, AfterViewInit {
 
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
 
   service: BuyService;
   fundClsc1Name: string;
@@ -60,24 +58,26 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
   displayedColumns: string[] = ['index', 'fundName', 'itakuKaishaName', 'kijunKakaku', 'zenjituhi', 'tesuryo', 'operation'];
   dataSource: any;
 
+  searchResult: any = [];
+
   ngOnInit() {
 
     console.log("ngOnInit()");
+
+    this.fundListService.getFundList().subscribe((ret: any) => {
+      this.elementData = ret.data;
+      this.searchResult = new MatTableDataSource<FundInfo>(this.elementData);
+      this.searchResult.paginator = this.paginator;
+    })
+
     // 検索条件エリア設定
     this.generatePage();
-
-    this.elementData = this.fundListService.retFundList;
-    this.service.searchResult = new MatTableDataSource<FundInfo>(this.elementData);
-    this.service.searchResult.paginator = this.paginator;
-    console.log(this.service.searchResult);
-
     console.log("this.service.searchResult:[" + this.service.searchResult.length + "]");
   }
 
   ngAfterViewInit() {
 
   }
-
 
   private generatePage() {
     // 委託会社
@@ -126,14 +126,11 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
     this.router.navigate(['/pages/customCard'])
   }
 
-  buyFund(fundId: any) {
+  buyFund(fundInfo: Object) {
     // TODO
-    // fund購入
-    console.log(fundId);
+    console.log(fundInfo);
 
-    // this.service.buyInfo.fundCd = fundId;
-
-    this.service.buyInfo1 = fundId;
+    this.service.buyInfo1 = fundInfo;
 
     console.log(this.service.buyInfo1);
 
@@ -153,16 +150,13 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
 
       this.errorMsg = "";
 
-      this.elementData = this.fundListService.retFundList;
-      this.service.searchResult = new MatTableDataSource<FundInfo>(this.elementData);
-      this.service.searchResult.paginator = this.paginator;
-      console.log(this.service.searchResult);
-      console.log(this.service.searchResult.paginator);
-
-
-
-      // console.log(this.elementData);
-
+      this.fundListService.getFundList().subscribe((ret: any) => {
+        this.elementData = ret.data;
+        this.searchResult = new MatTableDataSource<FundInfo>(this.elementData);
+        this.searchResult.paginator = this.paginator;
+      })
+      console.log(this.searchResult.data);
+      
     }
 
   }
