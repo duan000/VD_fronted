@@ -1,36 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BuyService } from 'src/app/service/buy.service';
 import { DataService } from 'src/app/service/data-service.service';
 
-export interface PeriodicElement {
-  index1: boolean;
-  index2: string;
-  index3: string;
-  index4: string;
-  index5: string;
-  index6: string;
-  index7: string;
-  index8: string;
-  index9: string;
-  index10: string;
-  index11: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    index1: false,
-    index2: '800000元(前xxxxxxx)',
-    index3: '0',
-    index4: '9061元',
-    index5: '-270元',
-    index6: '15:00',
-    index7: '32200-32200001',
-    index8: '',
-    index9: '',
-    index10: '',
-    index11: '',
-  }
-];
+const ELEMENT_DATA1 = {
+  NSAAvailableGold:"",
+  transactionDivision:"",
+  basePrice: "",
+  RatioTheDayBefore:"",
+  Time:"",
+  BankAccount:"",
+  Amount:"",
+  phoneNumber1:"",
+  phoneNumber2:"",
+  phoneNumber3:"",
+
+  state:true,
+}
+  
 
 @Component({
   selector: 'app-buy-input',
@@ -40,56 +28,46 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class BuyInputComponent implements OnInit {
 
-  constructor(private router:Router,private service:DataService) { }
+  constructor(private router:Router,private service:DataService,private service1:BuyService) { }
 
-  dataSource = ELEMENT_DATA;
+  dataSource1 = ELEMENT_DATA1;
+
+  public check:boolean = false;
 
   ngOnInit(): void {
-    this.dataSource = this.service.data1;
-    // console.log(this.service.data1);
+
+    this.dataSource1.basePrice = this.service1.buyInfo1.basePrice;
+
+    console.log(this.dataSource1);
   }
 
   goto(){
-    // console.log(this.dataSource);
     
-    // console.log(this.service.data1);
-    // console.log(this.dataSource[0].index1)
-    // if (!this.dataSource[0].index1){
-    //   alert("请选择投资信托说明书！");
-    //   return;
-    // }
-    // if (this.dataSource[0].index3 == ""){
-    //   alert("请选择取引区分！");
-    //   return;
-    // }
-    // if (this.dataSource[0].index8 == ""){
-    //   alert("请填写金额！");
-    //   return;
-    // }
-    // if (this.dataSource[0].index9 == "" || this.dataSource[0].index10 == "" || this.dataSource[0].index11 == ""){
-    //   alert("请正确填写电话号码！");
-    //   return;
-    // }
-    // this.service.data1 = this.dataSource;
-    // for (let i = 0; i < this.service.dataList.length; i++) {
-    //   if (this.service.dataList[i].name == "取引区分") {
-    //     if (this.service.data1[0].index3 == '0') {
-    //       this.service.dataList[i].info = "NSA欲优先";
-    //     }else{
-    //       this.service.dataList[i].info = "特定预";
-    //     }
-        
-    //   }
-    //   if (this.service.dataList[i].name == "经济口座记号-番号") {
-    //     this.service.dataList[i].info = this.service.data1[0].index8;
-    //   }
-    //   if (this.service.dataList[i].name == "日中联络电话番号") {
-    //     this.service.dataList[i].info = this.service.data1[0].index9+'-'+this.service.data1[0].index10+'-'+this.service.data1[0].index11;
-    //   }
-    // }
+    if (!this.check){
+      alert("投資信託説明書が選択されていません!");
+      return;
+    }
+    if (this.dataSource1.transactionDivision == ""){
+      alert("取引区分が選択されていません!");
+      return;
+    }
+    if (this.dataSource1.Amount == ""){
+      alert("金額は空にできません!");
+      return;
+    }
+    if (this.dataSource1.phoneNumber1 == "" || this.dataSource1.phoneNumber2 == "" || this.dataSource1.phoneNumber3 == ""){
+      alert("電話番号を正しく記入してください。");
+      return;
+    }
+
+    this.service.enter(this.dataSource1)
+      .subscribe((data:any) => {   
+        if(data.success){
+          this.service.data = data.data;
+          this.router.navigate(['/pages/cpage1']);
+        }
+      });
     
-    console.log(this.service.data1);
-    this.router.navigate(['/pages/cpage1']);
   }
 
   goback() {

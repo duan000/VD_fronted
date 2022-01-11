@@ -1,110 +1,112 @@
 <app-vd-frame [display]="true" [status]="3">
-<div class="main" id="main">
-    <p class="p1">注文内容を確認してください</p>
-    <mat-card class="matcard">プロモーションエリア</mat-card>
-    <br>
-    <br>
-
-    <div class="div1">
-            <p class="div1-p1">特别口座-配当收入期间</p>
-            <p>種別：-/（年）</p>
-    </div>
-    <div class="clearFloat"></div>
-
-    <div class="totalArea" fxLayout="column">
-        <div class="title">
-            <div><h3><b>ファンド名称</b></h3></div>
+    <div class="main" id="main">
+        <p class="p1">注文内容を確認してください</p>
+        <mat-card class="matcard">プロモーションエリア</mat-card>
+        <br>
+        <br>
+    
+        <div class="div1">
+                <p class="div1-p1">特别口座-配当收入期间</p>
+                <p>種別：-/（年）</p>
         </div>
-        <div class="inputArea" fxLayout="column">
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <b>申請区分</b>
-                </div>
-                <div  class="item_right" fxFlex="75">購入</div>
+        <div class="clearFloat"></div>
+    
+        <div class="totalArea" fxLayout="column">
+            <div class="title">
+                <div><h3><b>ファンド名称</b></h3></div>
             </div>
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <b>申請金額</b>
+            <div class="inputArea" fxLayout="column">
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <b>申請区分</b>
+                    </div>
+                    <div  class="item_right" fxFlex="75">{{data1.applicationDivision}}</div>
                 </div>
-                <div  class="item_right" fxFlex="75">XXXXX</div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <b>基準金額</b>
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <b>申請金額</b>
+                    </div>
+                    <div  class="item_right" fxFlex="75">{{data1.applicationAmount}}</div>
                 </div>
-                <div  class="item_right" fxFlex="75">XXXXX</div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <b>約定金額/口数</b>
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <b>基準金額</b>
+                    </div>
+                    <div  class="item_right" fxFlex="75">{{data1.standardAmount}}</div>
                 </div>
-                <div  class="item_right" fxFlex="75">XXXXX</div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <b>手数料</b>
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <b>約定金額/口数</b>
+                    </div>
+                    <div  class="item_right" fxFlex="75">{{ data1.fixedAmount }}</div>
                 </div>
-                <div  class="item_right" fxFlex="75">XXXXX</div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <mat-label><b>決済金額</b></mat-label>
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <b>手数料</b>
+                    </div>
+                    <div  class="item_right" fxFlex="75">{{ data.commission }}</div>
                 </div>
-                <div class="item_right" fxFlex="75">XXXXX</div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <mat-label><b>申請日</b></mat-label>
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <mat-label><b>決済金額</b></mat-label>
+                    </div>
+                    <div class="item_right" fxFlex="75">{{ data1.settlementAmount }}</div>
                 </div>
-                <div class="item_right" fxFlex="75">XXXXX</div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <mat-label><b>約定日</b></mat-label>
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <mat-label><b>申請日</b></mat-label>
+                    </div>
+                    <!-- <div class="item_right" fxFlex="75">{{date | date:"yyyy-MM-dd HH:mm:ss"}}</div> -->
+                    <div class="item_right" fxFlex="75">{{ data1.applicationDate }}</div>
                 </div>
-                <div class="item_right" fxFlex="75">XXXXX</div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <mat-label><b>受渡日</b></mat-label>
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <mat-label><b>約定日</b></mat-label>
+                    </div>
+                    <div class="item_right" fxFlex="75">{{ data.tradeDate }}</div>
                 </div>
-                <div class="item_right" fxFlex="75">XXXXX</div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1px">
-                <div class="item" fxFlex="25">
-                    <mat-label><b>決済銀行口座-番号</b></mat-label>
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <mat-label><b>受渡日</b></mat-label>
+                    </div>
+                    <div class="item_right" fxFlex="75">{{ data.deliveryDate }}</div>
                 </div>
-                <div class="item_right" fxFlex="75">XXXXX</div>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1px" fxLayoutAlign="start">
-                <div class="item_bottom" fxFlex="25" fxFlexOffset="0px">
-                    <mat-label><b>連絡電話番号</b></mat-label>
+                <div fxLayout="row" fxLayoutGap="1px">
+                    <div class="item" fxFlex="25">
+                        <mat-label><b>決済銀行口座-番号</b></mat-label>
+                    </div>
+                    <div class="item_right" fxFlex="75">{{data1.bankAccount}}</div>
                 </div>
-                <div class="item_bottom_right" fxFlex="75">
-                    XXXXX - XXXXX - XXXXX
-                    <!-- {{ dataSource[0].index9 }}-{{ dataSource[0].index10 }}-{{ dataSource[0].index11 }} -->
+                <div fxLayout="row" fxLayoutGap="1px" fxLayoutAlign="start">
+                    <div class="item_bottom" fxFlex="25" fxFlexOffset="0px">
+                        <mat-label><b>連絡電話番号</b></mat-label>
+                    </div>
+                    <div class="item_bottom_right" fxFlex="75">
+                        <!-- XXXXX - XXXXX - XXXXX -->
+                        {{ data.telephoneNumber }}
+                        <!-- {{ dataSource[0].index9 }}-{{ dataSource[0].index10 }}-{{ dataSource[0].index11 }} -->
+                    </div>
                 </div>
             </div>
         </div>
+    
+        <p class="p2">注文内容入力</p>
+        <p class="p3">内容确认</p>
+        <div class="div2">
+            <button mat-raised-button class="button1" (click)="goBack()"><<返回</button>
+            <button mat-raised-button class="button2" color="warn" (click)="goto()">实行</button>
+        </div>
+        <p class="p4" style="margin-top: 20px;">
+            ※1.xxxxxxxx<br>
+            ※2.xxxxxxxx
+        </p>
+        <mat-card class="matcard">プロモーションエリア</mat-card>
+        <br/>
+        <mat-card class="matcard">プロモーションエリア</mat-card>
+        <br/>
+        <div class="div3">
+            <a href="/top" style="float: right;">メニューページへ戻る</a>
+        </div>
+    
     </div>
-
-    <p class="p2">注文内容入力</p>
-    <p class="p3">内容确认</p>
-    <div class="div2">
-        <button mat-raised-button class="button1" (click)="goBack()"><<返回</button>
-        <button mat-raised-button class="button2" color="warn" (click)="goto()">实行</button>
-    </div>
-    <p class="p4" style="margin-top: 20px;">
-        ※1.xxxxxxxx<br>
-        ※2.xxxxxxxx
-    </p>
-    <mat-card class="matcard">プロモーションエリア</mat-card>
-    <br/>
-    <mat-card class="matcard">プロモーションエリア</mat-card>
-    <br/>
-    <div class="div3">
-        <a href="/top" style="float: right;">メニューページへ戻る</a>
-    </div>
-
-</div>
-</app-vd-frame>
+    </app-vd-frame>

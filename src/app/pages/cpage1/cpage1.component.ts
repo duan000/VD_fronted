@@ -1,35 +1,22 @@
-// import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BasicPageComponent } from 'src/app/common/basicPage';
 import { DataService } from 'src/app/service/data-service.service';
 
-
-export interface PeriodicElement {
-  name: string;
-  info: any;
+const data1:any={
+  applicationDivision:"",
+  applicationAmount:"",
+  standardAmount:"",
+  fixedAmount:"",
+  commission:"",
+  settlementAmount:"",
+  applicationDate:"",
+  tradeDate:"",
+  deliveryDate:"",
+  bankAccount:"",
+  telephoneNumber:"",
+  searchType:"success",
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  // {name: '取引区分', info: '购入'},
-  // // {name: '取引区分', info: ['1','2']},
-  // {name: '申请金额', info: '1000 元'},
-  // {name: '基准面额', info: '2022年3月30日'},
-  // {name: '约定金额/口数', info: '1000元(约定口数：11.036口)'},
-  // {name: '税收手数', info: '0元'},
-  // {name: '结算金额', info: '10000元'},
-  // {name: '申请日', info: '2022年3月31日'},
-  // {name: '约定日', info: '2022年4月1日'},
-  // {name: '受理日', info: '2022年4月4日'},
-  // {name: '经济口座记号-番号', info: '32200-32200001'},
-  // {name: '日中联络电话番号', info: '03-0000-3121'},
-];
-
-const ELEMENT_DATA1: PeriodicElement[] = [
-  // {name: '受付番号', info: '0000001467'},
-  // {name: '受付日期', info: '2022年3月31日 13时51分'},
-  // {name: '状态', info: '受付中'},
-];
 
 @Component({
   selector: 'app-cpage1',
@@ -42,22 +29,45 @@ export class Cpage1Component extends BasicPageComponent implements OnInit {
     super();
   }
 
-  dataSource = ELEMENT_DATA;
-  dataSource1 = ELEMENT_DATA1;
+  public data:any = {};
+
+  public data1:any = data1;
+
+  public date!: Date;
+  
 
   type:number = 1;
 
   
 
   ngOnInit(): void {
-    this.dataSource = this.service.dataList;
-    this.dataSource1 = this.service.dataList1;
-    console.log(this.service.dataList)
+
+    this.date = new Date();
+
+    this.data = this.service.data.data.details[0];
+
+    this.data1.commission = this.data.commission;
+    this.data1.tradeDate = this.data.tradeDate;
+    this.data1.deliveryDate = this.data.deliveryDate;
+    this.data1.telephoneNumber = this.data.telephoneNumber;
+
+
+    console.log(this.data);
   }
 
 
   goto(){
-    this.router.navigate(['/pages/cpage2'])
+
+    this.service.enter1(this.data1)
+      .subscribe((data:any) => {   
+        console.log(data)
+        if(data.success){
+          this.service.data2 = data.data;
+          this.router.navigate(['/pages/cpage2'])
+        }
+      });
+
+    
   }
 
   goBack(){

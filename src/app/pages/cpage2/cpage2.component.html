@@ -16,7 +16,7 @@
                 <div class="item" fxFlex="25">
                     <b>受付番号</b>
                 </div>
-                <div  class="item_right" fxFlex="75">購入</div>
+                <div  class="item_right" fxFlex="75">{{ data.operationNumber }}</div>
             </div>
             <div fxLayout="row" fxLayoutGap="1px">
                 <div class="item" fxFlex="25">
@@ -64,7 +64,7 @@
                     <div class="item" fxFlex="25">
                         <b>手数料</b>
                     </div>
-                    <div  class="item_right" fxFlex="75">XXXXX</div>
+                    <div  class="item_right" fxFlex="75">{{ data.commission }}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
@@ -82,13 +82,13 @@
                     <div class="item" fxFlex="25">
                         <mat-label><b>約定日</b></mat-label>
                     </div>
-                    <div class="item_right" fxFlex="75">XXXXX</div>
+                    <div class="item_right" fxFlex="75">{{ data.tradeDate }}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
                         <mat-label><b>受渡日</b></mat-label>
                     </div>
-                    <div class="item_right" fxFlex="75">XXXXX</div>
+                    <div class="item_right" fxFlex="75">{{ data.deliveryDate }}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
@@ -101,7 +101,7 @@
                         <mat-label><b>連絡電話番号</b></mat-label>
                     </div>
                     <div class="item_bottom_right" fxFlex="75">
-                        XXXXX - XXXXX - XXXXX
+                        {{ data.telephoneNumber }}
                         <!-- {{ dataSource[0].index9 }}-{{ dataSource[0].index10 }}-{{ dataSource[0].index11 }} -->
                     </div>
                 </div>

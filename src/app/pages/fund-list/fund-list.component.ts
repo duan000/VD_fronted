@@ -58,7 +58,7 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
 
   elementData: FundInfo[] = [];
     // fund列表
-  displayedColumns: string[] = ['index', 'fundName', 'itakuKaishaName', 'kijunKakaku', 'zenjituhi', 'tesuryo', 'operation'];
+  displayedColumns: string[] = ['index', 'fundName', 'itakuKaishaName', 'kijunKakaku', 'zenjituhi', 'tesuryo', 'operation']; 
   dataSource:any;
 
   ngOnInit() {
@@ -134,23 +134,31 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
     this.router.navigate(['/pages/customCard'])
   }
 
-  buyFund(fundId: string) {
+  buyFund(fundId: any) {
     // TODO
     // fund購入
     console.log(fundId);
-    this.service.buyInfo.fundCd = fundId;
+
+    // this.service.buyInfo.fundCd = fundId;
+
+    this.service.buyInfo1 = fundId;
+
+    console.log(this.service.buyInfo1);
+
     this.router.navigate(['/pages/cpage0'])
   }
 
   search() {
 
     // 仮判定
-    if (this.service.searchCondition.fundName) {
+    if (this.service.searchCondition.fundName) { 
+
       this.errorMsg = "明細データがございません。条件を直して再度検索してください";
       this.service.searchResult = undefined;
       this.scrollToTop();
 
     } else {
+
       this.errorMsg = "";
 
       this.elementData = this.fundListService.retFundList;
@@ -158,6 +166,7 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
       // this.service.searchResult.filters();
       this.service.searchResult.paginator = this.paginator;
       
+      console.log(this.service.searchResult);
 
       console.log(this.elementData);
   

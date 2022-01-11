@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FundInfo } from '../common/Entity/FundInfo';
 
@@ -28,9 +29,27 @@ const ELEMENT_DATA1: FundInfo[] = [
 
 export class FundListServiceService {
 
-  constructor() { }
+  public dataList:any[]=[];
 
-  public retFundList: any[] = ELEMENT_DATA;
+  public retFundList: any[] = this.dataList;
+
+  constructor(private httpClient:HttpClient) {
+
+    let url = "http://localhost:8888/lki/loadCurrencyFundSearch";
+
+    this.httpClient.get(url,{params:{status:0}})
+      .subscribe((data:any) => {
+        console.log(data);
+        this.dataList = data.data;
+        this.retFundList = data.data;
+        console.log(this.dataList);
+      });
+  }
+
+
+  // public retFundList: any[] = ELEMENT_DATA;
+  // public retFundList: any[] = this.dataList;
+
   public retFundList1: any[] = ELEMENT_DATA1;
 
 }
