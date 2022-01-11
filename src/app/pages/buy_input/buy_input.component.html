@@ -23,7 +23,9 @@
                     <div class="read_button" fxFlex="25">
                         <mat-icon color="warn">attachment</mat-icon>&nbsp;
                         <mat-label>(PDF: 323K)</mat-label>&nbsp;&nbsp;&nbsp;
-                        <button mat-raised-button color="accent" class="btnDisplay">表 示</button>                    
+                        <a href="http://www.baidu.com/abc.pdf" target="_blank">
+                            <button mat-raised-button color="accent" class="btnDisplay" (click)="setState()">表 示</button>
+                        </a>                 
                         <!-- <input type="file" name="" id="" accept="application/pdf"> -->
                     </div>
                     <div class="read_check" fxFlex="5" fxLayout="column">
@@ -105,7 +107,7 @@
                         <mat-label><b>金額</b></mat-label><font color="red"> ※必須</font>
                     </div>
                     <div class="item_right" fxFlex="75">
-                        <input type="number" [(ngModel)]="dataSource1.Amount" [value]="dataSource1.Amount"> 元 
+                        <input type="number" [(ngModel)]="dataSource1.Amount" [value]="dataSource1.Amount"> {{ unit == '0'?'元':'株' }}
                          <!-- {{ dataSource[0].index8 }} -->
                     </div>
                 </div>
@@ -123,7 +125,7 @@
             </div>
             <div class="btnDiv">
                 <button mat-raised-button color="accent" class="button1" (click)="goback()"><<戻す</button>
-                <button mat-raised-button color="warn" class="button2" (click)="goto()">確　認</button>
+                <button mat-raised-button color="warn" class="button2" [disabled]="state" (click)="goto()">確　認</button>
             </div>
         </div>
         <mat-card class="matcard">
