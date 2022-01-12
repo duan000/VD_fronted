@@ -21,6 +21,7 @@ export class Cpage2Component extends BasicPageComponent implements OnInit {
     this.data = this.service.data.data.details[0];
 
     console.log(this.data);
+    
   }
 
 }

@@ -38,6 +38,12 @@ export class BuyInputComponent implements OnInit {
 
   public state:boolean = true;
 
+  public confirmState:boolean = true;
+
+  public expression:boolean = false;
+
+  public expression1:boolean = false;
+
   ngOnInit(): void {
 
     this.dataSource1.basePrice = this.service1.buyInfo1.basePrice;
@@ -47,10 +53,11 @@ export class BuyInputComponent implements OnInit {
 
   goto(){
     
-    if (!this.check){
-      alert("投資信託説明書が選択されていません!");
-      return;
-    }
+    // if (!this.check){
+    //   alert("投資信託説明書が選択されていません!");
+    //   return;
+    // }
+
     if (this.dataSource1.transactionDivision == ""){
       alert("取引区分が選択されていません!");
       return;
@@ -64,11 +71,11 @@ export class BuyInputComponent implements OnInit {
       return;
     }
 
-    let num = /^[0-9]{2,4}$/;
-    if(!num.test(this.dataSource1.phoneNumber1) || !num.test(this.dataSource1.phoneNumber2) || !num.test(this.dataSource1.phoneNumber3)){
-      alert("電話番号を正しく記入してください。");
-      return;
-    }
+    // let num = /^[0-9]{2,4}$/;
+    // if(!num.test(this.dataSource1.phoneNumber1) || !num.test(this.dataSource1.phoneNumber2) || !num.test(this.dataSource1.phoneNumber3)){
+    //   alert("電話番号を正しく記入してください。");
+    //   return;
+    // }
 
     this.service.enter(this.dataSource1)
       .subscribe((data:any) => {   
@@ -86,6 +93,62 @@ export class BuyInputComponent implements OnInit {
 
   setState(){
     this.state = false;
+  }
+
+  checkChange(){
+    if(this.check){
+      this.confirmState = false;
+    }else{
+      this.confirmState = true;
+    }
+  }
+
+  amountCheck(){
+    let num = /^[0-9]{1,6}$/;
+    if(!num.test(this.dataSource1.Amount)){
+      this.dataSource1.Amount = "";
+      this.expression1 = true;
+      return;
+    }else{
+      this.expression1 = false;
+    }
+  }
+
+  phoneNumCherk1(){
+    let num = /^[0-9]{1,4}$/;
+    if(!num.test(this.dataSource1.phoneNumber1)){
+      this.dataSource1.phoneNumber1 = "";
+      this.expression = true;
+      return;
+    }else{
+      this.expression = false;
+    }
+
+  }
+
+  phoneNumCherk2(){
+    let num = /^[0-9]{1,4}$/;
+    
+    if(!num.test(this.dataSource1.phoneNumber2)){
+      this.dataSource1.phoneNumber2 = "";
+      this.expression = true;
+      return;
+    }else{
+      this.expression = false;
+    }
+    
+  }
+  phoneNumCherk3(){
+    let num = /^[0-9]{1,4}$/;
+  
+    if(!num.test(this.dataSource1.phoneNumber3)){
+      this.dataSource1.phoneNumber3 = "";
+      this.expression = true;
+      return;
+    }else{
+      this.expression = false;
+    }
+
   }
 
 }
