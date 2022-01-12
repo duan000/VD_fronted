@@ -38,8 +38,6 @@ export class BuyInputComponent implements OnInit {
 
   public state:boolean = true;
 
-  public confirmState:boolean = true;
-
   public expression:boolean = false;
 
   public expression1:boolean = false;
@@ -95,17 +93,17 @@ export class BuyInputComponent implements OnInit {
     this.state = false;
   }
 
-  checkChange(){
-    if(this.check){
-      this.confirmState = false;
-    }else{
-      this.confirmState = true;
-    }
-  }
-
   amountCheck(){
-    let num = /^[0-9]{1,6}$/;
-    if(!num.test(this.dataSource1.Amount)){
+    // let num = /^[0-9]{1,8}$/;
+    // if(!num.test(this.dataSource1.Amount)){
+    //   this.dataSource1.Amount = "";
+    //   this.expression1 = true;
+    //   return;
+    // }else{
+    //   this.expression1 = false;
+    // }
+
+    if(Number(this.dataSource1.Amount) < 0){
       this.dataSource1.Amount = "";
       this.expression1 = true;
       return;
@@ -114,42 +112,65 @@ export class BuyInputComponent implements OnInit {
     }
   }
 
-  phoneNumCherk1(){
+  phoneNumCherk(phoneNumber:string,type:string){
     let num = /^[0-9]{1,4}$/;
-    if(!num.test(this.dataSource1.phoneNumber1)){
-      this.dataSource1.phoneNumber1 = "";
-      this.expression = true;
-      return;
+    if(!num.test(phoneNumber)){
+      switch(type){
+        case  "phoneNumber1":
+          this.dataSource1.phoneNumber1 = "";
+          this.expression = true;
+          return;
+        case  "phoneNumber2":
+          this.dataSource1.phoneNumber2 = "";
+          this.expression = true;
+          return;
+        case  "phoneNumber3":
+          this.dataSource1.phoneNumber3 = "";
+          this.expression = true;
+          return;
+      }
     }else{
       this.expression = false;
     }
 
   }
 
-  phoneNumCherk2(){
-    let num = /^[0-9]{1,4}$/;
+  // phoneNumCherk1(){
+  //   let num = /^[0-9]{1,4}$/;
+  //   if(!num.test(this.dataSource1.phoneNumber1)){
+  //     this.dataSource1.phoneNumber1 = "";
+  //     this.expression = true;
+  //     return;
+  //   }else{
+  //     this.expression = false;
+  //   }
+
+  // }
+
+  // phoneNumCherk2(){
+  //   let num = /^[0-9]{1,4}$/;
     
-    if(!num.test(this.dataSource1.phoneNumber2)){
-      this.dataSource1.phoneNumber2 = "";
-      this.expression = true;
-      return;
-    }else{
-      this.expression = false;
-    }
+  //   if(!num.test(this.dataSource1.phoneNumber2)){
+  //     this.dataSource1.phoneNumber2 = "";
+  //     this.expression = true;
+  //     return;
+  //   }else{
+  //     this.expression = false;
+  //   }
     
-  }
-  phoneNumCherk3(){
-    let num = /^[0-9]{1,4}$/;
+  // }
+  // phoneNumCherk3(){
+  //   let num = /^[0-9]{1,4}$/;
   
-    if(!num.test(this.dataSource1.phoneNumber3)){
-      this.dataSource1.phoneNumber3 = "";
-      this.expression = true;
-      return;
-    }else{
-      this.expression = false;
-    }
+  //   if(!num.test(this.dataSource1.phoneNumber3)){
+  //     this.dataSource1.phoneNumber3 = "";
+  //     this.expression = true;
+  //     return;
+  //   }else{
+  //     this.expression = false;
+  //   }
 
-  }
+  // }
 
 }
 
