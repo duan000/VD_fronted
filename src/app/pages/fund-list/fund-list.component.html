@@ -115,7 +115,7 @@
 
                     <ng-container matColumnDef="kijunKakaku">
                         <th mat-header-cell *matHeaderCellDef> 基準価額 </th>
-                        <td mat-cell *matCellDef="let element"> {{element.basePrice}}円 </td>
+                        <td mat-cell *matCellDef="let element"> {{element.basePrice == null?element.netAssetValue: element.basePrice}}円 </td>
                     </ng-container>
 
                     <ng-container matColumnDef="zenjituhi">
