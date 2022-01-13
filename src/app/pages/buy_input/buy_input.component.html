@@ -30,7 +30,7 @@
                     </div>
                     <div class="read_check" fxFlex="5" fxLayout="column">
                         <div>
-                            <mat-checkbox corlor="warn" [(ngModel)]="check" [disabled]="state" (change)="checkChange()"></mat-checkbox>
+                            <mat-checkbox corlor="warn" [(ngModel)]="check" [disabled]="state"></mat-checkbox>
                         </div>
                         <div class="div">必須</div>
                     </div>
@@ -119,9 +119,9 @@
                         <mat-label><b>連絡電話番号</b></mat-label><font color="red"> ※必須</font>
                     </div>
                     <div class="item_bottom_right" fxFlex="75">
-                        <input type="text" maxlength="2" [(ngModel)]="dataSource1.phoneNumber1" [value]="dataSource1.phoneNumber1" (keyup)="phoneNumCherk1()"> -
-                        <input type="text" maxlength="4" [(ngModel)]="dataSource1.phoneNumber2" [value]="dataSource1.phoneNumber2" (keyup)="phoneNumCherk2()"> -
-                        <input type="text" maxlength="4" [(ngModel)]="dataSource1.phoneNumber3" [value]="dataSource1.phoneNumber3" (keyup)="phoneNumCherk3()"> （半角数字）
+                        <input type="text" maxlength="2" [(ngModel)]="dataSource1.phoneNumber1" [value]="dataSource1.phoneNumber1" (keyup)="phoneNumCherk(dataSource1.phoneNumber1,'phoneNumber1')"> -
+                        <input type="text" maxlength="4" [(ngModel)]="dataSource1.phoneNumber2" [value]="dataSource1.phoneNumber2" (keyup)="phoneNumCherk(dataSource1.phoneNumber2,'phoneNumber2')"> -
+                        <input type="text" maxlength="4" [(ngModel)]="dataSource1.phoneNumber3" [value]="dataSource1.phoneNumber3" (keyup)="phoneNumCherk(dataSource1.phoneNumber3,'phoneNumber3')"> （半角数字）
                         
                         <br>
                         <span style="color: red; font-size: 12px;" *ngIf="expression">電話番号を正しく記入してください。</span>
@@ -130,7 +130,7 @@
             </div>
             <div class="btnDiv">
                 <button mat-raised-button color="accent" class="button1" (click)="goback()"><<戻す</button>
-                <button mat-raised-button color="warn" class="button2" [disabled]="confirmState" (click)="goto()">確　認</button>
+                <button mat-raised-button color="warn" class="button2" [disabled]="!check" (click)="goto()">確　認</button>
             </div>
         </div>
         <mat-card class="matcard">
