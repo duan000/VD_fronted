@@ -20,10 +20,8 @@ export class BuyService {
     this.fundClsc2Name = "";
     this.fundClsc3Name = "";
     this.searchResult = [];
-
+    this.buyInfo1 = {}
     this.buyInfo = new BuyInfo();
-
-    this.buyInfo1 = {};
    }
 
   searchCondition: SearchCondition;
@@ -37,7 +35,6 @@ export class BuyService {
   searchResult: any;
 
   buyInfo: BuyInfo;
-
-  buyInfo1:any={};
+  buyInfo1:any = {}
 
 }

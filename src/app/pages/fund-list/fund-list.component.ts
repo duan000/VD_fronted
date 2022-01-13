@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
@@ -122,11 +122,20 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
     this.service.fundClsc3Options = [selectFundC1, selectFundC2];
   }
 
+  //　Form Validators
+  // 全角文字を入力
+  fundNamePattern = "\[\^\\x20-\\x7E\]\*"
+  fundNameFormControl = new FormControl('', [
+    Validators.pattern(this.fundNamePattern)
+  ]);
+
+  
+
   forwordPage() {
     this.router.navigate(['/pages/customCard'])
   }
 
-  buyFund(fundInfo: Object) {
+  buyFund(fundInfo: any) {
     // TODO
     console.log(fundInfo);
 

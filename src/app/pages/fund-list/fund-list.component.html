@@ -11,10 +11,14 @@
                 </div>
                 <div class="searchItem" fxFlex="75">
                     <mat-form-field class="example-form-field" appearance="outline">
-                        <input matInput color="warn" type="text" [(ngModel)]="service.searchCondition.fundName">
+                        <input matInput color="warn" type="text" [(ngModel)]="service.searchCondition.fundName" [formControl]="fundNameFormControl">
                     </mat-form-field>
+                    <mat-error *ngIf="fundNameFormControl.hasError('pattern')">
+                        全角文字を入力してください。
+                    </mat-error>
                 </div>
             </div>
+
             <!-- 委託会社 -->
             <div fxLayout="row">
                 <div class="searchItem" fxFlex="25">委託会社</div>
