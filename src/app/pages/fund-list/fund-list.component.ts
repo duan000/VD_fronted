@@ -129,8 +129,6 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
     Validators.pattern(this.fundNamePattern)
   ]);
 
-  
-
   forwordPage() {
     this.router.navigate(['/pages/customCard'])
   }
@@ -152,7 +150,8 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
     if (this.service.searchCondition.fundName) {
 
       this.errorMsg = "明細データがございません。条件を直して再度検索してください";
-      this.service.searchResult = undefined;
+      this.searchResult = undefined;
+      this.paginator.length = 0;
       this.scrollToTop();
 
     } else {
@@ -165,7 +164,7 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
         this.searchResult.paginator = this.paginator;
       })
       console.log(this.searchResult.data);
-      
+
     }
 
   }
