@@ -57,7 +57,7 @@
                     <div class="item" fxFlex="25">
                         <mat-label><b>NSA利用可能金额</b></mat-label>
                     </div>
-                    <div  class="item_right" fxFlex="75">{{ dataSource1.NSAAvailableGold }}</div>
+                    <div  class="item_right" fxFlex="75">{{ dataSource1.NSAAvailableGold }}円</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item_bottom" fxFlex="25">
@@ -82,7 +82,7 @@
                     <div class="item" fxFlex="25">
                         <b>基準金額</b>
                     </div>
-                    <div  class="item_right" fxFlex="75">{{ dataSource1.basePrice}}</div>
+                    <div  class="item_right" fxFlex="75">{{ dataSource1.basePrice}}円</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
@@ -94,7 +94,7 @@
                     <div class="item" fxFlex="25">
                         <mat-label><b>時刻</b></mat-label>
                     </div>
-                    <div class="item_right" fxFlex="75">{{ dataSource1.Time }}</div>
+                    <div class="item_right" fxFlex="75">{{ dataSource1.Time | date:'yyyy-MM-dd HH:mm:ss' }}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
@@ -107,7 +107,7 @@
                         <mat-label><b>金額</b></mat-label><font color="red"> ※必須</font>
                     </div>
                     <div class="item_right" fxFlex="75">
-                        <input type="number" [(ngModel)]="dataSource1.Amount" [value]="dataSource1.Amount" (change)="amountCheck()"> {{ unit == '0'?'元':'株' }}
+                        <input type="text" [(ngModel)]="dataSource1.Amount" [value]="dataSource1.Amount" (change)="amountCheck()"> {{ unit == '0'?'円':'株' }}
                         
                         <br>
                         <span style="color: red; font-size: 12px;" *ngIf="expression1">正しい金額を記入してください。</span>
@@ -130,7 +130,7 @@
             </div>
             <div class="btnDiv">
                 <button mat-raised-button color="accent" class="button1" (click)="goback()"><<戻す</button>
-                <button mat-raised-button color="warn" class="button2" [disabled]="!check" (click)="goto()">確　認</button>
+                <button mat-raised-button color="warn" class="button2"  (click)="goto()">確　認</button>
             </div>
         </div>
         <mat-card class="matcard">

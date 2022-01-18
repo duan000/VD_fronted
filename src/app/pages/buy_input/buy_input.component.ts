@@ -5,12 +5,12 @@ import { DataService } from 'src/app/service/data-service.service';
 
 
 const ELEMENT_DATA1 = {
-  NSAAvailableGold:"",
+  NSAAvailableGold:"2000",
   transactionDivision:"",
   basePrice: "",
-  RatioTheDayBefore:"",
-  Time:"",
-  BankAccount:"",
+  RatioTheDayBefore:"1.1",
+  Time:new Date,
+  BankAccount:"00001",
   Amount:"",
   phoneNumber1:"",
   phoneNumber2:"",
@@ -42,15 +42,23 @@ export class BuyInputComponent implements OnInit {
 
   public expression1:boolean = false;
 
+
+
+
+
+
   ngOnInit(): void {
 
-    this.dataSource1.basePrice = this.service1.buyInfo1.basePrice;
+    console.log('aa',this.service1.buyInfo1.fundDiv);
+    this.dataSource1.basePrice = this.service1.buyInfo1.fundDiv == 0?this.service1.buyInfo1.netAssetValue: this.service1.buyInfo1.basePrice;
+    const date = new Date();
+    this.dataSource1.Time = date;
 
     console.log(this.dataSource1);
   }
 
   goto(){
-    
+
     // if (!this.check){
     //   alert("投資信託説明書が選択されていません!");
     //   return;
@@ -77,8 +85,11 @@ export class BuyInputComponent implements OnInit {
 
     this.service.enter(this.dataSource1)
       .subscribe((data:any) => {   
+        console.log('入力画面迁移数据',this.dataSource1);
+        
         if(data.success){
           this.service.data = data.data;
+          console.log('入力确认响应数据',this.service.data);
           this.router.navigate(['/pages/cpage1']);
         }
       });

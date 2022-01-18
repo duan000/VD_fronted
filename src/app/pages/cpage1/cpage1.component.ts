@@ -16,6 +16,9 @@ const data1:any={
   bankAccount:"",
   telephoneNumber:"",
   searchType:"success",
+
+  // temp
+  state:true
 }
 
 @Component({
@@ -35,7 +38,6 @@ export class Cpage1Component extends BasicPageComponent implements OnInit {
 
   public date!: Date;
   
-
   type:number = 1;
 
   
@@ -45,22 +47,28 @@ export class Cpage1Component extends BasicPageComponent implements OnInit {
     this.date = new Date();
 
     this.data = this.service.data.data.details[0];
-
-    this.data1.commission = this.data.commission;
-    this.data1.tradeDate = this.data.tradeDate;
-    this.data1.deliveryDate = this.data.deliveryDate;
-    this.data1.telephoneNumber = this.data.telephoneNumber;
-
-
+    console.log('test',this.data);
+    
+    this.data1.applicationDivision = '購入';
+    this.data1.applicationAmount = '1000';
+    this.data1.standardAmount = '2000';
+    this.data1.fixedAmount = '3000';
+    this.data1.settlementAmount = '5000';
+    this.data1.applicationDate = '2022-01-05';
+    this.data1.bankAccount = '00001';
+    
     console.log(this.data);
   }
 
 
   goto(){
 
+    this.data1.state = true;
+
     this.service.enter1(this.data1)
       .subscribe((data:any) => {   
-        console.log(data)
+        console.log(this.data1);
+        console.log('确认响应data',data)
         if(data.success){
           this.service.data2 = data.data;
           this.router.navigate(['/pages/cpage2'])

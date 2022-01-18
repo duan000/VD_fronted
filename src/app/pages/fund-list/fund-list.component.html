@@ -79,7 +79,7 @@
             <div fxLayout="row">
                 <div class="searchItem" fxFlex="25">昇降順</div>
                 <div class="searchItem" fxFlex="75">
-                    <mat-radio-group [(ngModel)]="radioForm.input_value">
+                    <mat-radio-group [(ngModel)]="service.searchCondition.sort">
                         <p>
                             <mat-radio-button checked value='1' color="warn">なし</mat-radio-button>
                         </p>
@@ -115,12 +115,13 @@
 
                     <ng-container matColumnDef="kijunKakaku">
                         <th mat-header-cell *matHeaderCellDef> 基準価額 </th>
-                        <td mat-cell *matCellDef="let element"> {{element.basePrice == null?element.netAssetValue: element.basePrice}}円 </td>
+                        <td mat-cell *matCellDef="let element"> {{element.fundDiv == 0?element.netAssetValue: element.basePrice}}円 </td>
                     </ng-container>
 
                     <ng-container matColumnDef="zenjituhi">
                         <th mat-header-cell *matHeaderCellDef> 前日比 </th>
-                        <td mat-cell *matCellDef="let element"> {{element.investmentCompany}}円 </td>
+                        <!-- <td mat-cell *matCellDef="let element"> {{element.investmentCompany}} </td> -->
+                        <td mat-cell *matCellDef="let element"> 89.0% </td>
                     </ng-container>
 
                     <ng-container matColumnDef="tesuryo">
@@ -130,7 +131,7 @@
 
                     <ng-container matColumnDef="operation">
                         <th mat-header-cell *matHeaderCellDef> 操作 </th>
-                        <td mat-cell *matCellDef="let element"><button mat-flat-button color="warn" (click)='buyFund(element)'>購入</button> </td>
+                        <td mat-cell *matCellDef="let element"><button mat-flat-button color="warn" (click)='buyFund(element)'>{{element.fundDiv == 0? '購入': '募集'}}</button> </td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -138,7 +139,7 @@
                 </table>
             </div>
             <div>
-                <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons aria-label="Select page of periodic elements">
+                <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons aria-label="Select page of periodic elements">
                 </mat-paginator>
             </div>
             <div>

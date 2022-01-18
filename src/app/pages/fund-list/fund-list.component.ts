@@ -26,6 +26,7 @@ import { FundInfo } from 'src/app/common/Entity/FundInfo';
 export class FundListComponent extends BasicPageComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
 
   service: BuyService;
   fundClsc1Name: string;
@@ -47,10 +48,6 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
 
   }
 
-  radioForm: any = [
-    { name: '昇降順', input_value: '1' }
-  ]
-
   control = new FormControl();
 
   elementData: FundInfo[] = [];
@@ -63,8 +60,10 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
   ngOnInit() {
 
     console.log("ngOnInit()");
-
+    this.service.searchCondition.sort = '1'
+    
     this.fundListService.getFundList().subscribe((ret: any) => {
+      console.log(ret.data);
       this.elementData = ret.data;
       this.searchResult = new MatTableDataSource<FundInfo>(this.elementData);
       this.searchResult.paginator = this.paginator;
@@ -76,7 +75,7 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
   }
 
   ngAfterViewInit() {
-
+    this.paginator._intl.itemsPerPageLabel = '数/ページ'
   }
 
   private generatePage() {
@@ -162,6 +161,8 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
         this.elementData = ret.data;
         this.searchResult = new MatTableDataSource<FundInfo>(this.elementData);
         this.searchResult.paginator = this.paginator;
+        console.log(this.paginator);
+        
       })
       console.log(this.searchResult.data);
 

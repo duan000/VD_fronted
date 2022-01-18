@@ -12,7 +12,7 @@
                     <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="1px">
                         <div class="item" fxFlex="35">
                             {{item.name}}
-                            <div class="check"> 必填 </div>
+                            <div class="check"> 必須 </div>
                         </div>
                         <div class="item" fxFlex="65">
                             <mat-radio-group [(ngModel)]="radioValue[i]">
@@ -34,7 +34,7 @@
                             <ng-container *ngFor="let item of dataSource1, let i = index">
                                 <div class="item">
                                     {{item.list_name}}
-                                    <p class="check">必填</p>
+                                    <p class="check">必須</p>
                                 </div>
                             </ng-container>
                         </div>
@@ -42,7 +42,7 @@
 
                     <div class="item" fxFlex="65">
                         <div class="item" *ngFor="let item of dataSource1, let i = index">
-                            <input style="height: 16px;" type="number" value="" id="" [(ngModel)]="item.value">年
+                            <input style="height: 16px;" type="text" value="" id="" [(ngModel)]="item.value">年
                         </div>
                     </div>
                 </div>
