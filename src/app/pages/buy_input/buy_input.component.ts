@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { BuyService } from 'src/app/service/buy.service';
 import { DataService } from 'src/app/service/data-service.service';
 
 
 const ELEMENT_DATA1 = {
+  fundName:'',
   NSAAvailableGold:"2000",
   transactionDivision:"",
-  basePrice: "",
-  RatioTheDayBefore:"1.1",
+  basePrice: "0",
+  RatioTheDayBefore:"89.0%",
   Time:new Date,
   BankAccount:"00001",
   Amount:"",
@@ -43,14 +44,10 @@ export class BuyInputComponent implements OnInit {
   public expression1:boolean = false;
 
 
-
-
-
-
   ngOnInit(): void {
 
-    console.log('aa',this.service1.buyInfo1.fundDiv);
     this.dataSource1.basePrice = this.service1.buyInfo1.fundDiv == 0?this.service1.buyInfo1.netAssetValue: this.service1.buyInfo1.basePrice;
+    this.dataSource1.fundName = this.service1.buyInfo1.fundName;
     const date = new Date();
     this.dataSource1.Time = date;
 
@@ -85,11 +82,11 @@ export class BuyInputComponent implements OnInit {
 
     this.service.enter(this.dataSource1)
       .subscribe((data:any) => {   
-        console.log('入力画面迁移数据',this.dataSource1);
+        console.log('前画面遷移データ',this.dataSource1);
         
         if(data.success){
           this.service.data = data.data;
-          console.log('入力确认响应数据',this.service.data);
+          console.log('入力確認レスポンシブデータ',this.service.data);
           this.router.navigate(['/pages/cpage1']);
         }
       });

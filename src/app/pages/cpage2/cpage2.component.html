@@ -4,79 +4,82 @@
         <mat-card class="matcard">プロモーションエリア</mat-card>
         <br>
         <br>
-    
+
         <div class="div1">
-                <p class="div1-p1">特别口座-配当收入期间</p>
-                <p>種別：-/（年）</p>
+            <p class="div1-p1">特别口座-配当收入期間外</p>
+            <!-- <p>種別：-/（年）</p> -->
         </div>
         <div class="clearFloat"></div>
-    
+
         <div class="headArea" fxLayout="column">
             <div fxLayout="row" fxLayoutGap="1px">
                 <div class="item" fxFlex="25">
                     <b>受付番号</b>
                 </div>
-                <div  class="item_right" fxFlex="75">{{ data.operationNumber }}</div>
+                <div class="item_right" fxFlex="75">{{ data.operationNumber }}</div>
             </div>
             <div fxLayout="row" fxLayoutGap="1px">
                 <div class="item" fxFlex="25">
                     <b>受付時刻</b>
                 </div>
-                <div  class="item_right" fxFlex="75">XXXXX</div>
+                <div class="item_right" fxFlex="75">{{tempData.time}}</div>
             </div>
             <div fxLayout="row" fxLayoutGap="1px">
                 <div class="item_bottom" fxFlex="25">
                     <b>ステータス</b>
                 </div>
-                <div  class="item_bottom_right" fxFlex="75">受付中</div>
+                <div class="item_bottom_right" fxFlex="75">{{tempData.status}}</div>
             </div>
         </div>
         <div class="totalArea" fxLayout="column">
             <div class="title">
-                <div><h3><b>ファンド名称</b></h3></div>
+                <div>
+                    <h3><b>{{ data.fundName }}</b></h3>
+                </div>
             </div>
             <div class="inputArea" fxLayout="column">
+
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
                         <b>申請区分</b>
                     </div>
-                    <div  class="item_right" fxFlex="75">購入</div>
+                    <div class="item_right" fxFlex="75">{{tempData.kuben}}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
                         <b>申請金額</b>
                     </div>
-                    <div  class="item_right" fxFlex="75">XXXXX</div>
+                    <div class="item_right" fxFlex="75">{{tempData.amountA}}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
                         <b>基準金額</b>
                     </div>
-                    <div  class="item_right" fxFlex="75">XXXXX</div>
+                    <div class="item_right" fxFlex="75">{{tempData.amountB}}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
                         <b>約定金額/口数</b>
                     </div>
-                    <div  class="item_right" fxFlex="75">XXXXX</div>
+                    <div class="item_right" fxFlex="75">{{tempData.amountC}}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
                         <b>手数料</b>
                     </div>
-                    <div  class="item_right" fxFlex="75">{{ data.commission }}</div>
+                    <div class="item_right" fxFlex="75">{{ data.commission }}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
                         <mat-label><b>決済金額</b></mat-label>
                     </div>
-                    <div class="item_right" fxFlex="75">XXXXX</div>
+                    <div class="item_right" fxFlex="75">{{tempData.amountD}}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
                         <mat-label><b>申請日</b></mat-label>
                     </div>
-                    <div class="item_right" fxFlex="75">XXXXX</div>
+                    <div class="item_right" fxFlex="75">{{tempData.day}}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px">
                     <div class="item" fxFlex="25">
@@ -94,7 +97,7 @@
                     <div class="item" fxFlex="25">
                         <mat-label><b>決済銀行口座-番号</b></mat-label>
                     </div>
-                    <div class="item_right" fxFlex="75">XXXXX</div>
+                    <div class="item_right" fxFlex="75">{{tempData.number}}</div>
                 </div>
                 <div fxLayout="row" fxLayoutGap="1px" fxLayoutAlign="start">
                     <div class="item_bottom" fxFlex="25" fxFlexOffset="0px">
@@ -107,19 +110,19 @@
                 </div>
             </div>
         </div>
-    
+
 
         <p class="p4" style="margin-top: 20px;">
             ※1.xxxxxxxx<br>
             ※2.xxxxxxxx
         </p>
         <mat-card class="matcard">プロモーションエリア</mat-card>
-        <br/>
+        <br />
         <mat-card class="matcard">プロモーションエリア</mat-card>
-        <br/>
+        <br />
         <div class="div3">
-            <a href="#" style="float: right;">メニューページへ戻る</a>
+            <a href="/top" style="float: right;">メニューページへ戻る</a>
         </div>
-    
+
     </div>
-    </app-vd-frame>
+</app-vd-frame>

@@ -29,6 +29,9 @@ const ELEMENT_DATA1: any[] = [
 })
 export class CustomCardInputComponent extends BasicPageComponent implements OnInit {
 
+  
+  investmentExperience =['経験なし','１年未満','５年未満','５年以上']
+
   data = {
     radioValue: [
       { annualIncome: '' },

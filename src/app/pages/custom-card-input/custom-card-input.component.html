@@ -41,8 +41,14 @@
                     </div>
 
                     <div class="item" fxFlex="65">
+
                         <div class="item" *ngFor="let item of dataSource1, let i = index">
-                            <input style="height: 16px;" type="text" value="" id="" [(ngModel)]="item.value">年
+                            <!-- <input style="height: 16px;" type="text" value="" id="" [(ngModel)]="item.value">年 -->
+                            <mat-radio-group>
+                                <span  *ngFor="let item of investmentExperience">
+                                    <mat-radio-button  style="margin-left: 8px;" [value]='item'>{{item}}</mat-radio-button>
+                                </span>
+                            </mat-radio-group>
                         </div>
                     </div>
                 </div>
