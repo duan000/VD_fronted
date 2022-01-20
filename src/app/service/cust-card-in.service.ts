@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class CustCardInService {
 
   dataSource1: any[] = [];
-  radioValue: any[] = []
+  radioValue = {}
 
   constructor() { }
 }

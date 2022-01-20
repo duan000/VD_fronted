@@ -1,22 +1,51 @@
 <app-vd-frame [display]="1" [status]="0">
     <div>
-
         <mat-card><b>お客様の情報入力お客様の情報入力お客様の情報入力</b></mat-card>
-
 
         <div id="qa" class="mainContent">
 
+
             <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="5px">
 
-                <ng-container *ngFor="let item of dataSource, let i = index">
+                <ng-container >
                     <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="1px">
                         <div class="item" fxFlex="35">
-                            {{item.name}}
+                            {{dataSource[0].name}}
                             <div class="check"> 必須 </div>
                         </div>
                         <div class="item" fxFlex="65">
-                            <mat-radio-group [(ngModel)]="radioValue[i]">
-                                <p *ngFor="let it of item.list_td">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.annualIncome">
+                                <p *ngFor="let it of dataSource[0].list_td">
+                                    <mat-radio-button [value]='it'>{{it}}</mat-radio-button>
+                                </p>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container >
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="1px">
+                        <div class="item" fxFlex="35">
+                            {{dataSource[1].name}}
+                            <div class="check"> 必須 </div>
+                        </div>
+                        <div class="item" fxFlex="65">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.financialAssets">
+                                <p *ngFor="let it of dataSource[1].list_td">
+                                    <mat-radio-button [value]='it'>{{it}}</mat-radio-button>
+                                </p>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container >
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="1px">
+                        <div class="item" fxFlex="35">
+                            {{dataSource[2].name}}
+                            <div class="check"> 必須 </div>
+                        </div>
+                        <div class="item" fxFlex="65">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.investmentPolicy">
+                                <p *ngFor="let it of dataSource[2].list_td">
                                     <mat-radio-button [value]='it'>{{it}}</mat-radio-button>
                                 </p>
                             </mat-radio-group>
@@ -42,24 +71,233 @@
 
                     <div class="item" fxFlex="65">
 
-                        <div class="item" *ngFor="let item of dataSource1, let i = index">
-                            <!-- <input style="height: 16px;" type="text" value="" id="" [(ngModel)]="item.value">年 -->
-                            <mat-radio-group>
-                                <span  *ngFor="let item of investmentExperience">
-                                    <mat-radio-button  style="margin-left: 8px;" [value]='item'>{{item}}</mat-radio-button>
+                        <div class="item">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.InvestmentExperience_1">
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[0]'>
+                                        {{investmentExperience[0]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[1]'>
+                                        {{investmentExperience[1]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[2]'>
+                                        {{investmentExperience[2]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[3]'>
+                                        {{investmentExperience[3]}}
+                                    </mat-radio-button>
+                                </span>
+                            </mat-radio-group>
+                        </div>
+                        <div class="item">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.InvestmentExperience_2">
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[0]'>
+                                        {{investmentExperience[0]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[1]'>
+                                        {{investmentExperience[1]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[2]'>
+                                        {{investmentExperience[2]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[3]'>
+                                        {{investmentExperience[3]}}
+                                    </mat-radio-button>
+                                </span>
+                            </mat-radio-group>
+                        </div>
+                        <div class="item">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.InvestmentExperience_3">
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[0]'>
+                                        {{investmentExperience[0]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[1]'>
+                                        {{investmentExperience[1]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[2]'>
+                                        {{investmentExperience[2]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[3]'>
+                                        {{investmentExperience[3]}}
+                                    </mat-radio-button>
+                                </span>
+                            </mat-radio-group>
+                        </div>
+                        <div class="item">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.InvestmentExperience_4">
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[0]'>
+                                        {{investmentExperience[0]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[1]'>
+                                        {{investmentExperience[1]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[2]'>
+                                        {{investmentExperience[2]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[3]'>
+                                        {{investmentExperience[3]}}
+                                    </mat-radio-button>
+                                </span>
+                            </mat-radio-group>
+                        </div>
+                        <div class="item">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.InvestmentExperience_5">
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[0]'>
+                                        {{investmentExperience[0]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[1]'>
+                                        {{investmentExperience[1]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[2]'>
+                                        {{investmentExperience[2]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[3]'>
+                                        {{investmentExperience[3]}}
+                                    </mat-radio-button>
+                                </span>
+                            </mat-radio-group>
+                        </div>
+                        <div class="item">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.InvestmentExperience_6">
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[0]'>
+                                        {{investmentExperience[0]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[1]'>
+                                        {{investmentExperience[1]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[2]'>
+                                        {{investmentExperience[2]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[3]'>
+                                        {{investmentExperience[3]}}
+                                    </mat-radio-button>
+                                </span>
+                            </mat-radio-group>
+                        </div>
+                        <div class="item">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.InvestmentExperience_7">
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[0]'>
+                                        {{investmentExperience[0]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[1]'>
+                                        {{investmentExperience[1]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[2]'>
+                                        {{investmentExperience[2]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[3]'>
+                                        {{investmentExperience[3]}}
+                                    </mat-radio-button>
+                                </span>
+                            </mat-radio-group>
+                        </div>
+                        <div class="item">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.InvestmentExperience_8">
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[0]'>
+                                        {{investmentExperience[0]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[1]'>
+                                        {{investmentExperience[1]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[2]'>
+                                        {{investmentExperience[2]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[3]'>
+                                        {{investmentExperience[3]}}
+                                    </mat-radio-button>
+                                </span>
+                            </mat-radio-group>
+                        </div>
+                        <div class="item">
+                            <mat-radio-group (change)='watchValue()' [(ngModel)]="btnCheck.InvestmentExperience_9">
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[0]'>
+                                        {{investmentExperience[0]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[1]'>
+                                        {{investmentExperience[1]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[2]'>
+                                        {{investmentExperience[2]}}
+                                    </mat-radio-button>
+                                </span>
+                                <span>
+                                    <mat-radio-button style="margin-left: 8px;" [value]='investmentExperience[3]'>
+                                        {{investmentExperience[3]}}
+                                    </mat-radio-button>
                                 </span>
                             </mat-radio-group>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
+
+
     </div>
 
     <div>
         <button mat-flat-button color="warn" (click)='goBack()'>≪戻る</button>
-        <button mat-flat-button color="warn" type="submit" class="nextBtn" (click)='nextPage()'>次へ</button>
+        <button mat-flat-button color="warn" type="submit" class="nextBtn"  (click)='nextPage()' [disabled]="!isShow">次へ</button>
     </div>
 
     <mat-card>

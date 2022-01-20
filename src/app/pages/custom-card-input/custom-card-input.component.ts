@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BasicPageComponent } from 'src/app/common/basicPage';
 import { CustCardInService } from 'src/app/service/cust-card-in.service';
@@ -29,36 +30,49 @@ const ELEMENT_DATA1: any[] = [
 })
 export class CustomCardInputComponent extends BasicPageComponent implements OnInit {
 
-  
-  investmentExperience =['経験なし','１年未満','５年未満','５年以上']
-
-  data = {
-    radioValue: [
-      { annualIncome: '' },
-      { financialAssets: '' },
-      { investmentPolicy: '' }
-    ],
-    investmentExperience: [
-      {inputValue1:''},
-      {inputValue2:''},
-      {inputValue3:''},
-      {inputValue4:''},
-      {inputValue5:''},
-      {inputValue6:''},
-      {inputValue7:''},
-      {inputValue8:''},
-      {inputValue9:''}
-    ],
+  constructor(
+    private router: Router,
+    private custService: CustCardInService,
+  ) {
+    super();
   }
 
+  investmentExperience = ['経験なし', '１年未満', '５年未満', '５年以上']
   dataSource = ELEMENT_DATA;
   // input_1-7绑定的值
   dataSource1 = ELEMENT_DATA1;
 
-  // radio绑定的值
-  public radioValue: any[] = [];
-  constructor(private router: Router, private custService: CustCardInService) {
-    super();
+  // ボタン制御 
+  isShow: boolean = false;
+
+  public btnCheck = {
+    annualIncome: '',
+    financialAssets: '',
+    investmentPolicy: '',
+    InvestmentExperience_1: '',
+    InvestmentExperience_2: '',
+    InvestmentExperience_3: '',
+    InvestmentExperience_4: '',
+    InvestmentExperience_5: '',
+    InvestmentExperience_6: '',
+    InvestmentExperience_7: '',
+    InvestmentExperience_8: '',
+    InvestmentExperience_9: '',
+  }
+
+  watchValue() {
+
+    if (!(this.btnCheck.annualIncome === '' || this.btnCheck.financialAssets === '' ||
+      this.btnCheck.investmentPolicy === '' || this.btnCheck.InvestmentExperience_1 === '' ||
+      this.btnCheck.InvestmentExperience_2 === '' || this.btnCheck.InvestmentExperience_3 === '' ||
+      this.btnCheck.InvestmentExperience_4 === '' || this.btnCheck.InvestmentExperience_5 === '' ||
+      this.btnCheck.InvestmentExperience_6 === '' || this.btnCheck.InvestmentExperience_7 === '' ||
+      this.btnCheck.InvestmentExperience_8 === '' || this.btnCheck.InvestmentExperience_9 === '')
+    ) {
+      this.isShow = true
+    } else {
+      this.isShow = false
+    }
   }
 
   ngOnInit(): void {
@@ -68,12 +82,10 @@ export class CustomCardInputComponent extends BasicPageComponent implements OnIn
   nextPage() {
 
     this.custService.dataSource1 = this.dataSource1;
-    this.custService.radioValue = this.radioValue;
+    this.custService.radioValue = this.btnCheck;
     console.log(this.custService.dataSource1)
     console.log(this.custService.radioValue)
-    console.log(this.data);
-    
-    
+
     this.router.navigate(['pages/fundList'])
   }
 

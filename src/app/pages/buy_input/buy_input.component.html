@@ -30,7 +30,7 @@
                     </div>
                     <div class="read_check" fxFlex="5" fxLayout="column">
                         <div>
-                            <mat-checkbox corlor="warn"  [disabled]="state"></mat-checkbox>
+                            <mat-checkbox corlor="warn" [disabled]="state" (change)='watchValue()' [(ngModel)]="checkboxValue"></mat-checkbox>
                         </div>
                         <div class="div">必須</div>
                     </div>
@@ -64,9 +64,21 @@
                     <div class="item_bottom" fxFlex="25">
                     <mat-label><b>取引区分</b></mat-label><font color="red">※必須</font>
                     </div>
-                    <div  class="item_bottom_right" fxFlex="75">
-                        <input type="radio" name="qufen" [(ngModel)]="dataSource1.transactionDivision" value="NISA優先">NISA優先
-                        <input type="radio" name="qufen" [(ngModel)]="dataSource1.transactionDivision" value="特定預り">特定預り
+                    <div class="item_bottom_right" fxFlex="75">
+                        <mat-radio-group (change)='watchValue()' [(ngModel)]="dataSource1.transactionDivision">
+                            <span>
+                                <mat-radio-button style="margin-left: 8px;" value='NISA優先'>
+                                    NISA優先
+                                </mat-radio-button>
+                            </span>
+                            <span>
+                                <mat-radio-button style="margin-left: 8px;" value='特定預り'>
+                                    特定預り
+                                </mat-radio-button>
+                            </span>
+                        </mat-radio-group>
+                        <!-- <input type="radio" name="qufen" (change)='watchValue()' [(ngModel)]="dataSource1.transactionDivision" value="NISA優先">NISA優先
+                        <input type="radio" name="qufen" (change)='watchValue()' [(ngModel)]="dataSource1.transactionDivision" value="特定預り">特定預り -->
                     </div>
                 </div>
             </div>
@@ -115,7 +127,7 @@
                         <mat-label><b>金額</b></mat-label><font color="red"> ※必須</font>
                     </div>
                     <div class="item_right" fxFlex="75">
-                        <input type="text" [(ngModel)]="dataSource1.Amount" [value]="dataSource1.Amount" (change)="amountCheck()"> {{ unit == '0'?'円':'株' }}
+                        <input type="text" [(ngModel)]="dataSource1.Amount" [value]="dataSource1.Amount" (change)="amountCheck();watchValue()"> {{ dataSource1.fundDiv == '0'?'円':'株' }}
                         
                         <br>
                         <span style="color: red; font-size: 12px;" *ngIf="expression1">正しい金額を記入してください。</span>
@@ -127,9 +139,9 @@
                         <mat-label><b>連絡電話番号</b></mat-label><font color="red"> ※必須</font>
                     </div>
                     <div class="item_bottom_right" fxFlex="75">
-                        <input type="text" maxlength="2" [(ngModel)]="dataSource1.phoneNumber1" [value]="dataSource1.phoneNumber1" (keyup)="phoneNumCherk(dataSource1.phoneNumber1,'phoneNumber1')"> -
-                        <input type="text" maxlength="4" [(ngModel)]="dataSource1.phoneNumber2" [value]="dataSource1.phoneNumber2" (keyup)="phoneNumCherk(dataSource1.phoneNumber2,'phoneNumber2')"> -
-                        <input type="text" maxlength="4" [(ngModel)]="dataSource1.phoneNumber3" [value]="dataSource1.phoneNumber3" (keyup)="phoneNumCherk(dataSource1.phoneNumber3,'phoneNumber3')"> （半角数字）
+                        <input matInput type="text" maxlength="2" (change)="watchValue()" [(ngModel)]="dataSource1.phoneNumber1" [value]="dataSource1.phoneNumber1" (keyup)="phoneNumCherk(dataSource1.phoneNumber1,'phoneNumber1')"> -
+                        <input matInput type="text" maxlength="4" (change)="watchValue()" [(ngModel)]="dataSource1.phoneNumber2" [value]="dataSource1.phoneNumber2" (keyup)="phoneNumCherk(dataSource1.phoneNumber2,'phoneNumber2')"> -
+                        <input matInput type="text" maxlength="4" (change)="watchValue()" [(ngModel)]="dataSource1.phoneNumber3" [value]="dataSource1.phoneNumber3" (keyup)="phoneNumCherk(dataSource1.phoneNumber3,'phoneNumber3')"> （半角数字）
                         
                         <br>
                         <span style="color: red; font-size: 12px;" *ngIf="expression">電話番号を正しく記入してください。</span>
@@ -138,7 +150,7 @@
             </div>
             <div class="btnDiv">
                 <button mat-raised-button color="accent" class="button1" (click)="goback()"><<戻す</button>
-                <button mat-raised-button color="warn" class="button2" [disabled]="check" (click)="goto()">確　認</button>
+                <button mat-raised-button color="warn" class="button2" [disabled]="!isShow" (click)="goto()">確　認</button>
             </div>
         </div>
         <mat-card class="matcard">

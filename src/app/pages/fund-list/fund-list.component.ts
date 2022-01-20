@@ -1,14 +1,13 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+
 
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FundListServiceService } from 'src/app/service/fund-list-service.service';
 import { BasicPageComponent } from 'src/app/common/basicPage';
 import { SearchCondition } from 'src/app/common/Entity/SearchCondition';
@@ -27,7 +26,6 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
-
   service: BuyService;
   fundClsc1Name: string;
   fundClsc2Name: string;
@@ -45,16 +43,12 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
     this.fundClsc2Name = "";
     this.fundClsc3Name = "";
     this.service = buyService;
-
   }
-
-  control = new FormControl();
 
   elementData: FundInfo[] = [];
   // fund列表
   displayedColumns: string[] = ['index', 'fundName', 'itakuKaishaName', 'kijunKakaku', 'zenjituhi', 'tesuryo', 'operation'];
   dataSource: any;
-
   searchResult: any = [];
 
   ngOnInit() {
@@ -75,7 +69,7 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
   }
 
   ngAfterViewInit() {
-    this.paginator._intl.itemsPerPageLabel = '数/ページ'
+    this.paginator._intl.itemsPerPageLabel = '数/ページ：'
   }
 
   private generatePage() {
@@ -133,7 +127,7 @@ export class FundListComponent extends BasicPageComponent implements OnInit, Aft
   }
 
   buyFund(fundInfo: any) {
-    // TODO
+
     console.log(fundInfo);
 
     this.service.buyInfo1 = fundInfo;
