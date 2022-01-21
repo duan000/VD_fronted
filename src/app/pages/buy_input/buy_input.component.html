@@ -139,9 +139,9 @@
                         <mat-label><b>連絡電話番号</b></mat-label><font color="red"> ※必須</font>
                     </div>
                     <div class="item_bottom_right" fxFlex="75">
-                        <input matInput type="text" maxlength="2" (change)="watchValue()" [(ngModel)]="dataSource1.phoneNumber1" [value]="dataSource1.phoneNumber1" (keyup)="phoneNumCherk(dataSource1.phoneNumber1,'phoneNumber1')"> -
-                        <input matInput type="text" maxlength="4" (change)="watchValue()" [(ngModel)]="dataSource1.phoneNumber2" [value]="dataSource1.phoneNumber2" (keyup)="phoneNumCherk(dataSource1.phoneNumber2,'phoneNumber2')"> -
-                        <input matInput type="text" maxlength="4" (change)="watchValue()" [(ngModel)]="dataSource1.phoneNumber3" [value]="dataSource1.phoneNumber3" (keyup)="phoneNumCherk(dataSource1.phoneNumber3,'phoneNumber3')"> （半角数字）
+                        <input type="text" maxlength="2" (change)="watchValue()" [(ngModel)]="dataSource1.phoneNumber1" [value]="dataSource1.phoneNumber1" (keyup)="phoneNumCherk(dataSource1.phoneNumber1,'phoneNumber1')"> -
+                        <input type="text" maxlength="4" (change)="watchValue()" [(ngModel)]="dataSource1.phoneNumber2" [value]="dataSource1.phoneNumber2" (keyup)="phoneNumCherk(dataSource1.phoneNumber2,'phoneNumber2')"> -
+                        <input type="text" maxlength="4" (change)="watchValue()" [(ngModel)]="dataSource1.phoneNumber3" [value]="dataSource1.phoneNumber3" (keyup)="phoneNumCherk(dataSource1.phoneNumber3,'phoneNumber3')"> （半角数字）
                         
                         <br>
                         <span style="color: red; font-size: 12px;" *ngIf="expression">電話番号を正しく記入してください。</span>

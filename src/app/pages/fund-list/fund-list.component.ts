@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { FundListServiceService } from 'src/app/service/fund-list-service.service';
 import { BasicPageComponent } from 'src/app/common/basicPage';
 import { SearchCondition } from 'src/app/common/Entity/SearchCondition';
-import { SelectItem } from 'src/app/common/Entity/selectItem';
+import { SelectItem } from 'src/app/common/Entity/SelectItem';
 import { BuyService } from 'src/app/service/buy.service';
 import { FundInfo } from 'src/app/common/Entity/FundInfo';
 

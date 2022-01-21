@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BuyInfo } from '../common/Entity/BuyInfo';
 import { FundInfo } from '../common/Entity/FundInfo';
 import { SearchCondition } from '../common/Entity/SearchCondition';
-import { SelectItem } from '../common/Entity/selectItem';
+import { SelectItem } from '../common/Entity/SelectItem';
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,5 @@
-import { SelectItem } from "./selectItem";
+// import { SelectItem } from "./selectItem";
+import { SelectItem } from "./SelectItem";
 
 export class SearchCondition {
     public fundName: string="";
