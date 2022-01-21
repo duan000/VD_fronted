@@ -11,23 +11,25 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { Cpage1Component } from './pages/cpage1/cpage1.component';
 import { Cpage2Component } from './pages/cpage2/cpage2.component';
 import { BuyInputComponent } from './pages/buy_input/buy_input.component';
+import { CompOneComponent } from './components/comp-one/comp-one.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'pages/buy', component: BuyComponent},
-  {path: 'top', component: TopPageComponent},
-  {path: 'pages/pageOne', component: PageOneComponent},
-  {path: 'pages/pageThree', component: PageThreeComponent},
-  {path: 'pages/customCard', component: CustomCardInputComponent},
-  {path: 'pages/fundList', component: FundListComponent},
-  {path: 'signIn', component: SignInComponent},
-  {path: 'pages/cpage1', component: Cpage1Component},
-  {path: 'pages/cpage2', component: Cpage2Component},
-  {path: 'pages/cpage0', component: BuyInputComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'pages/buy', component: BuyComponent },
+  { path: 'top', component: TopPageComponent },
+  { path: 'pages/pageOne', component: PageOneComponent },
+  { path: 'pages/pageThree', component: PageThreeComponent },
+  { path: 'pages/customCard', component: CustomCardInputComponent },
+  { path: 'pages/fundList', component: FundListComponent },
+  { path: 'signIn', component: SignInComponent },
+  { path: 'pages/cpage1', component: Cpage1Component },
+  { path: 'pages/cpage2', component: Cpage2Component },
+  { path: 'pages/cpage0', component: BuyInputComponent },
+  { path: 'test', component: CompOneComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
