@@ -14,6 +14,7 @@ import { BuyInputComponent } from './pages/buy_input/buy_input.component';
 import { CompOneComponent } from './components/comp-one/comp-one.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'pages/buy', component: BuyComponent },
   { path: 'top', component: TopPageComponent },
